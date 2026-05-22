@@ -433,6 +433,154 @@
         .ucenje-kpi-val { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; background: linear-gradient(135deg, var(--teal), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .ucenje-kpi-lbl { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 3px; }
 
+        /* ─────────────────── PROJEKT MOVE / DRAG&DROP ─────────────────── */
+        .proj-move-bar {
+            display: flex; align-items: center; gap: 8px;
+            padding: 6px 12px; background: rgba(136,102,255,0.04);
+            border-bottom: 1px solid var(--br);
+            font-size: 10px; color: var(--muted);
+        }
+        .proj-drag-handle {
+            cursor: grab; color: var(--purple); font-size: 12px;
+            padding: 3px 5px; border-radius: 5px;
+            transition: background 0.15s;
+        }
+        .proj-drag-handle:active { cursor: grabbing; background: rgba(136,102,255,0.15); }
+        .proj-move-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+        .proj-move-btn {
+            background: rgba(136,102,255,0.12); border: 1px solid rgba(136,102,255,0.25);
+            color: var(--purple); border-radius: 6px;
+            width: 24px; height: 24px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.15s;
+            font-size: 10px;
+        }
+        .proj-move-btn:hover { background: rgba(136,102,255,0.22); transform: scale(1.06); }
+        .proj-move-btn:active { transform: scale(0.92); }
+        .proj-pos-badge {
+            margin-left: auto;
+            background: var(--t); border: 1px solid var(--br);
+            padding: 2px 8px; border-radius: 12px;
+            font-size: 9px; color: var(--muted); font-weight: 700;
+        }
+        .drag-over-proj {
+            outline: 2px dashed var(--purple) !important;
+            outline-offset: -2px;
+            background: rgba(136,102,255,0.05) !important;
+        }
+        .sub-drag-handle {
+            cursor: grab; color: var(--blue); font-size: 10px;
+            padding: 0 4px; margin-right: 2px;
+            opacity: 0.55;
+        }
+        .sub-drag-handle:active { cursor: grabbing; opacity: 1; }
+        .sub-move-controls {
+            display: inline-flex; align-items: center; gap: 4px; margin-left: auto;
+        }
+        .sub-move-btn {
+            background: rgba(68,136,255,0.1); border: 1px solid rgba(68,136,255,0.22);
+            color: var(--blue); border-radius: 5px;
+            width: 20px; height: 20px;
+            display: inline-flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.15s;
+            font-size: 9px;
+        }
+        .sub-move-btn:hover { background: rgba(68,136,255,0.2); }
+        .sub-move-btn:active { transform: scale(0.9); }
+        .sub-pos-badge {
+            font-size: 8px; color: var(--muted); font-weight: 700;
+            padding: 1px 5px; background: rgba(255,255,255,0.04);
+            border-radius: 8px; margin-left: 2px;
+        }
+        .drag-over-sub {
+            outline: 2px dashed var(--blue) !important;
+            outline-offset: -2px;
+            background: rgba(68,136,255,0.05) !important;
+        }
+
+        /* ─────────────────── NAPOMENA — schedule + edit + download ─────────────────── */
+        .napomena-card {
+            background: var(--s); border: 1px solid var(--br);
+            border-radius: 12px; padding: 12px 14px; margin: 0 14px 10px;
+            transition: all 0.2s;
+        }
+        .napomena-card:hover { border-color: rgba(68,136,255,0.35); }
+        .napomena-card-hdr { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+        .napomena-card-subject { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--tx); flex: 1; word-break: break-word; }
+        .napomena-card-meta { font-size: 10px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+        .napomena-card-body {
+            font-size: 12px; color: #bbb; white-space: pre-wrap; line-height: 1.5;
+            background: var(--t); padding: 8px 10px; border-radius: 8px;
+            max-height: 120px; overflow-y: auto;
+        }
+        .napomena-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+        .nap-act-btn {
+            background: var(--t); border: 1px solid var(--br);
+            color: var(--tx); padding: 6px 10px; border-radius: 8px;
+            font-size: 11px; font-weight: 600; cursor: pointer;
+            font-family: 'DM Sans', sans-serif; display: inline-flex; align-items: center; gap: 4px;
+            transition: all 0.15s;
+        }
+        .nap-act-btn:hover { transform: translateY(-1px); }
+        .nap-act-btn.edit { color: var(--amber); border-color: rgba(255,170,34,0.35); background: rgba(255,170,34,0.08); }
+        .nap-act-btn.txt { color: var(--blue); border-color: rgba(68,136,255,0.35); background: rgba(68,136,255,0.08); }
+        .nap-act-btn.pdf { color: var(--red); border-color: rgba(255,68,102,0.35); background: rgba(255,68,102,0.08); }
+        .nap-act-btn.send { color: var(--g); border-color: rgba(0,255,136,0.35); background: rgba(0,255,136,0.08); }
+        .nap-act-btn.del { color: var(--red); border-color: rgba(255,68,102,0.3); background: rgba(255,68,102,0.08); }
+        .napomena-del-btn {
+            background: rgba(255,68,102,0.1); border: none; color: var(--red);
+            border-radius: 8px; padding: 5px 9px; cursor: pointer; font-size: 11px;
+        }
+        .scheduled-tag {
+            display: inline-flex; align-items: center; gap: 4px;
+            background: rgba(255,170,34,0.12); color: var(--amber);
+            border: 1px solid rgba(255,170,34,0.3);
+            padding: 2px 8px; border-radius: 12px;
+            font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px;
+        }
+        .sent-tag {
+            display: inline-flex; align-items: center; gap: 4px;
+            background: rgba(0,255,136,0.12); color: var(--g);
+            border: 1px solid rgba(0,255,136,0.3);
+            padding: 2px 8px; border-radius: 12px;
+            font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px;
+        }
+
+        /* ─────────────────── UČENJE — pojednostavljen prikaz ─────────────────── */
+        .ucenje-txt-preview {
+            margin: 12px 14px;
+            background: var(--s); border: 1px solid var(--br);
+            border-radius: 14px; padding: 14px;
+        }
+        .ucenje-txt-preview-hdr {
+            display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+            font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700;
+            color: var(--teal);
+        }
+        .ucenje-txt-content {
+            background: var(--t); border: 1px solid var(--br); border-radius: 10px;
+            padding: 12px; max-height: 320px; overflow-y: auto;
+            font-size: 12px; line-height: 1.6; color: #ccc;
+            white-space: pre-wrap; word-break: break-word;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .ucenje-actions-row {
+            display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;
+        }
+        .ucenje-action-btn {
+            flex: 1; min-width: 130px;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+            padding: 10px 12px; border-radius: 12px; border: 1px solid var(--br);
+            background: var(--t); color: var(--tx);
+            font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700;
+            cursor: pointer; transition: all 0.15s;
+        }
+        .ucenje-action-btn:active { transform: scale(0.97); }
+        .ucenje-action-btn.teal { background: rgba(0,212,170,0.12); color: var(--teal); border-color: rgba(0,212,170,0.35); }
+        .ucenje-action-btn.blue { background: rgba(68,136,255,0.12); color: var(--blue); border-color: rgba(68,136,255,0.35); }
+        .ucenje-action-btn.amber { background: rgba(255,170,34,0.12); color: var(--amber); border-color: rgba(255,170,34,0.35); }
+        .ucenje-action-btn.purple { background: rgba(136,102,255,0.12); color: var(--purple); border-color: rgba(136,102,255,0.35); }
+
         /* ─────────────────── PROJEKT CHECKBOX COLLAPSE ─────────────────── */
         .proj-inline-cb-wrap {
             display: flex; align-items: center; gap: 6px; flex-shrink: 0;
@@ -666,13 +814,9 @@
 
         <!-- HOME -->
         <div class="page active" id="page-home">
-            <div class="kpi-strip">
+            <div class="kpi-strip" style="grid-template-columns:repeat(2,1fr);">
                 <div class="kpi"><div class="kpi-val" id="k-total">0</div><div class="kpi-lbl">Projekata</div></div>
-                <div class="kpi"><div class="kpi-val" id="k-active">0</div><div class="kpi-lbl">Aktivnih</div></div>
-                <div class="kpi"><div class="kpi-val" id="k-time">0h</div><div class="kpi-lbl">Sati</div></div>
                 <div class="kpi"><div class="kpi-val" id="k-tasks">0</div><div class="kpi-lbl">Zadataka</div></div>
-                <div class="kpi"><div class="kpi-val" id="k-gantt">0</div><div class="kpi-lbl">Gantti</div></div>
-                <div class="kpi"><div class="kpi-val" id="k-week">0%</div><div class="kpi-lbl">Tjedni</div></div>
             </div>
             <div class="section-hdr">
                 <h2>Projekti</h2>
@@ -760,14 +904,24 @@
                 <span class="badge" id="schedBadge" style="background:rgba(255,170,34,0.12);color:var(--amber);border-color:rgba(255,170,34,0.3);display:none;">0 zakazano</span>
             </div>
             <div style="padding:0 14px 14px;">
+                <input type="hidden" id="eEditId">
                 <div class="fgroup"><label>Pošiljaoc</label><input class="finput" id="eFrom" type="email" placeholder="vas@email.com"></div>
                 <div class="fgroup"><label>Primatelj(i)</label><input class="finput" id="eTo" type="text" placeholder="primatelj@email.com"></div>
                 <div class="fgroup"><label>Naslov</label><input class="finput" id="eSubject" placeholder="Naslov poruke..."></div>
                 <div class="fgroup"><label>Poruka</label><textarea class="finput" id="eBody" rows="5" style="min-height:110px;resize:vertical;" placeholder="Unesite poruku..."></textarea></div>
-                <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                    <button style="flex:1;min-width:130px;padding:12px;border-radius:12px;background:var(--t);border:1px solid var(--br);color:var(--muted);font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;" onclick="saveNapomena()"><i class="fas fa-save"></i> Sačuvaj</button>
-                    <button style="flex:1;min-width:130px;padding:12px;border-radius:12px;background:linear-gradient(135deg,var(--blue),#2255cc);border:none;color:#fff;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;" onclick="sendEmailNow()"><i class="fas fa-paper-plane"></i> Pošalji</button>
+                <div class="fgroup">
+                    <label><i class="fas fa-clock" style="color:var(--amber);margin-right:4px;"></i> Zakaži slanje (opcionalno)</label>
+                    <input class="finput" id="eScheduleAt" type="datetime-local" placeholder="Datum i vrijeme slanja">
+                    <div style="font-size:10px;color:var(--muted);margin-top:5px;">
+                        💡 Ostavite prazno za odmah; ili odaberite datum/vrijeme — kad dođe vrijeme, dobit ćete podsjetnik (browser mora biti otvoren).
+                    </div>
                 </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                    <button id="saveNapomenaBtn" style="flex:1;min-width:130px;padding:12px;border-radius:12px;background:var(--t);border:1px solid var(--br);color:var(--tx);font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;" onclick="saveOrUpdateNapomena()"><i class="fas fa-save"></i> Sačuvaj</button>
+                    <button style="flex:1;min-width:130px;padding:12px;border-radius:12px;background:linear-gradient(135deg,var(--amber),#cc8800);border:none;color:#000;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;" onclick="scheduleNapomenaEmail()"><i class="fas fa-clock"></i> Zakaži</button>
+                    <button style="flex:1;min-width:130px;padding:12px;border-radius:12px;background:linear-gradient(135deg,var(--blue),#2255cc);border:none;color:#fff;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;" onclick="sendEmailNow()"><i class="fas fa-paper-plane"></i> Pošalji odmah</button>
+                </div>
+                <button id="cancelEditNapBtn" style="display:none;width:100%;margin-top:8px;padding:10px;border-radius:10px;background:rgba(255,68,102,0.1);border:1px solid rgba(255,68,102,0.3);color:var(--red);font-size:12px;font-weight:600;cursor:pointer;" onclick="cancelEditNapomena()"><i class="fas fa-times"></i> Otkaži uređivanje</button>
             </div>
             <div class="section-hdr"><h2>Sačuvane napomene</h2><span class="badge" id="napomenaBadge">0</span></div>
             <div id="napomenaList"></div>
@@ -808,10 +962,7 @@
                     <tbody id="costTableBody"></tbody>
                 </table>
             </div>
-            <div class="cost-chart-card">
-                <div class="cost-chart-title"><i class="fas fa-chart-line"></i> Rast troškova po tjednima (€)</div>
-                <canvas id="weeklyCostTrendChart"></canvas>
-            </div>
+            <!-- Graf "Rast troškova po tjednima" uklonjen po zahtjevu -->
         </div>
 
         <!-- ANALIZA -->
@@ -833,21 +984,21 @@
             </div>
         </div>
 
-        <!-- UČENJE -->
+        <!-- UČENJE — rekonstruirano: PDF → TXT auto-konverzija + opcionalno audio -->
         <div class="page" id="page-ucenje">
             <div class="ucenje-kpi-strip">
                 <div class="ucenje-kpi"><div class="ucenje-kpi-val" id="uk-pages">0</div><div class="ucenje-kpi-lbl">Stranica</div></div>
-                <div class="ucenje-kpi"><div class="ucenje-kpi-val" id="uk-annots">0</div><div class="ucenje-kpi-lbl">Napomena</div></div>
                 <div class="ucenje-kpi"><div class="ucenje-kpi-val" id="uk-words">0</div><div class="ucenje-kpi-lbl">Riječi</div></div>
+                <div class="ucenje-kpi"><div class="ucenje-kpi-val" id="uk-chars">0</div><div class="ucenje-kpi-lbl">Znakova</div></div>
             </div>
             <div class="ucenje-hero" id="ucenjeHero">
-                <div class="ucenje-hero-title">📚 Centar za učenje</div>
-                <div class="ucenje-hero-sub">Učitajte PDF, dodajte napomene i pretvorite u audio</div>
+                <div class="ucenje-hero-title">📚 PDF → TXT konvertor</div>
+                <div class="ucenje-hero-sub">Učitaj PDF — automatski se konvertuje u tekst. Opcionalno: preslušaj kao audio.</div>
                 <div class="upload-drop-zone" id="pdfDropZone">
                     <input type="file" id="pdfFileInput" accept=".pdf" onchange="handlePdfUpload(event)">
                     <i class="fas fa-cloud-upload-alt upload-icon"></i>
                     <div class="upload-text">Klikni ili prevuci PDF ovdje</div>
-                    <div class="upload-sub">Podržano: PDF dokumenti</div>
+                    <div class="upload-sub">Auto-konverzija u TXT • Audio dostupan na zahtjev</div>
                 </div>
             </div>
             <div class="pdf-file-info" id="pdfFileInfo" style="display:none;">
@@ -856,50 +1007,28 @@
                     <div class="pdf-file-name" id="pdfFileName">—</div>
                     <div class="pdf-file-meta" id="pdfFileMeta">—</div>
                 </div>
-                <button onclick="clearPdf()" style="background:rgba(255,68,102,0.12);border:none;color:var(--red);border-radius:8px;padding:5px 10px;cursor:pointer;font-size:11px;"><i class="fas fa-times"></i></button>
+                <button onclick="clearPdf()" style="background:rgba(255,68,102,0.12);border:none;color:var(--red);border-radius:8px;padding:5px 10px;cursor:pointer;font-size:11px;" title="Ukloni"><i class="fas fa-times"></i></button>
             </div>
-            <div class="ucenje-toolbar" id="ucenjeToolbar" style="display:none;">
-                <button class="utool-btn teal" onclick="downloadAnnotatedPdf()"><i class="fas fa-highlighter"></i> PDF s napomenama</button>
-                <button class="utool-btn blue" onclick="downloadAsTxt()"><i class="fas fa-file-alt"></i> Preuzmi TXT</button>
-                <button class="utool-btn purple" onclick="downloadAsDocx()"><i class="fas fa-file-word"></i> Preuzmi DOCX</button>
-                <button class="utool-btn amber" onclick="generateAudio()"><i class="fas fa-volume-up"></i> Generiši audio</button>
-            </div>
-            <div class="annotation-toolbar" id="annotToolbar" style="display:none;">
-                <span style="font-size:11px;color:var(--muted);font-weight:600;margin-right:4px;">Alat:</span>
-                <button class="annot-mode-btn yellow" id="btnYellow" onclick="setAnnotMode('yellow')">🟡 Žuta</button>
-                <button class="annot-mode-btn green" id="btnGreen" onclick="setAnnotMode('green')">🟢 Zelena</button>
-                <button class="annot-mode-btn red" id="btnRed" onclick="setAnnotMode('red')">🔴 Crvena</button>
-                <button class="annot-mode-btn note" id="btnNote" onclick="setAnnotMode('note')"><i class="fas fa-sticky-note"></i> Bilješka</button>
-                <button class="annot-mode-btn erase" id="btnErase" onclick="setAnnotMode('erase')"><i class="fas fa-eraser"></i> Brisanje</button>
-                <button style="margin-left:auto;background:rgba(255,68,102,0.1);border:1px solid rgba(255,68,102,0.2);color:var(--red);border-radius:20px;padding:5px 12px;font-size:11px;cursor:pointer;font-family:'DM Sans',sans-serif;" onclick="clearAllAnnotations()"><i class="fas fa-trash"></i> Briši sve</button>
-            </div>
-            <div class="pdf-page-nav" id="pdfPageNav" style="display:none;">
-                <button onclick="prevPdfPage()"><i class="fas fa-chevron-left"></i></button>
-                <span id="pdfPageLabel">Str. 1 / 1</span>
-                <button onclick="nextPdfPage()"><i class="fas fa-chevron-right"></i></button>
-            </div>
-            <div class="pdf-viewer-wrap" id="pdfViewerWrap" style="display:none;">
-                <div style="position:relative;display:inline-block;width:100%;" id="pdfCanvasWrap">
-                    <div class="pdf-page-container" id="pdfPageContainer">
-                        <canvas id="pdfCanvas"></canvas>
-                        <canvas id="annotCanvas" class="pdf-annotation-layer"></canvas>
-                        <div id="notePopup" class="note-popup">
-                            <textarea id="noteText" placeholder="Unesite bilješku..."></textarea>
-                            <div class="note-popup-actions">
-                                <button class="save-note" onclick="saveNoteAnnotation()">Spremi</button>
-                                <button class="cancel-note" onclick="cancelNote()">Otkaži</button>
-                            </div>
-                        </div>
-                    </div>
+
+            <!-- Glavni TXT preview - prikaz konvertovanog teksta -->
+            <div class="ucenje-txt-preview" id="ucenjeTxtPreview" style="display:none;">
+                <div class="ucenje-txt-preview-hdr">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Konvertovani tekst</span>
+                </div>
+                <div class="ucenje-txt-content" id="ucenjeTxtContent">—</div>
+                <div class="ucenje-actions-row">
+                    <button class="ucenje-action-btn blue" onclick="downloadAsTxt()"><i class="fas fa-download"></i> Preuzmi TXT</button>
+                    <button class="ucenje-action-btn purple" onclick="downloadAsDocx()"><i class="fas fa-file-word"></i> Preuzmi DOCX</button>
+                    <button class="ucenje-action-btn amber" onclick="toggleAudioPlayback()"><i class="fas fa-volume-up"></i> <span id="audioToggleLbl">Pokreni audio</span></button>
+                    <button class="ucenje-action-btn teal" onclick="copyTxtToClipboard()"><i class="fas fa-copy"></i> Kopiraj</button>
                 </div>
             </div>
+
+            <!-- Audio kontrola (prikaže se kad korisnik klikne audio) -->
             <div class="audio-player-card" id="audioPlayerCard" style="display:none;">
-                <div class="audio-player-title"><i class="fas fa-headphones"></i> Audio snimak dokumenta</div>
-                <audio id="audioPlayer" controls></audio>
-                <div class="audio-status" id="audioStatus">Preslušaj ili preuzmi audio snimak.</div>
-                <div style="margin-top:10px;display:flex;gap:8px;">
-                    <button class="utool-btn amber" onclick="downloadAudio()" style="flex:1;justify-content:center;"><i class="fas fa-download"></i> Preuzmi MP3</button>
-                </div>
+                <div class="audio-player-title"><i class="fas fa-headphones"></i> Audio reprodukcija teksta</div>
+                <div class="audio-status" id="audioStatus">Spreman za reprodukciju.</div>
             </div>
         </div>
 
@@ -1371,6 +1500,8 @@ document.addEventListener('DOMContentLoaded', async ()=>{
     hideProgress();
     renderAll();
     if (connected) setSheetStatus('connected', '🟢 Povezano sa Sheet-om');
+    // Inicijaliziraj zakazane podsjetnike za napomene
+    _initScheduledReminders();
     document.getElementById('costItemDate').value=TODAY.toISOString().split('T')[0];
     document.getElementById('addCostItemBtn').addEventListener('click',addCostItem);
     document.getElementById('createCustomCostBtn').addEventListener('click',createCustomCost);
@@ -1572,7 +1703,9 @@ function renderProjects(){
     const activePList=showHiddenMap['__all']?list:visible;
     el.innerHTML='';
 
-    activePList.forEach(p=>{
+    activePList.forEach((p, projDispIdx)=>{
+        // Real index in master 'projects' array (za drag&drop / move funkcije)
+        const realIdx = projects.findIndex(pp=>pp.id===p.id);
         const totalT=(p.timeSpent||[]).reduce((s,e)=>s+e.hours,0);
         const catCls=getCatClass(p.category);
         const statusTxt=p.status==='running'?T('proj_active'):p.status==='upcoming'?T('proj_upcoming'):T('proj_done');
@@ -1588,6 +1721,12 @@ function renderProjects(){
         const card=document.createElement('div');
         card.className='tree-card';
         card.style.cssText=`margin:0 14px 10px;opacity:${isHidden?'0.45':'1'};`;
+        card.draggable = true;
+        card.addEventListener('dragstart', (e)=>onProjDragStart(e, realIdx));
+        card.addEventListener('dragend', onProjDragEnd);
+        card.addEventListener('dragover', onProjDragOver);
+        card.addEventListener('dragleave', onProjDragLeave);
+        card.addEventListener('drop', (e)=>onProjDrop(e, realIdx));
 
         // Progress bar
         const progBar=document.createElement('div');
@@ -1595,15 +1734,27 @@ function renderProjects(){
         progBar.innerHTML=`<div class="tree-prog-fill" style="width:${p.progress}%"></div>`;
         card.appendChild(progBar);
 
+        // Move controls row (gore/dolje strelice + drag handle)
+        const moveBar = document.createElement('div');
+        moveBar.className = 'proj-move-bar';
+        moveBar.innerHTML = `
+            <span class="proj-drag-handle" title="Povucite da pomjerite projekt"><i class="fas fa-grip-vertical"></i></span>
+            <span class="proj-move-label">Premjesti:</span>
+            <button class="proj-move-btn" onclick="moveProject(${p.id},-1)" title="Pomjeri gore (naprijed)"><i class="fas fa-arrow-up"></i></button>
+            <button class="proj-move-btn" onclick="moveProject(${p.id},1)" title="Pomjeri dole (nazad)"><i class="fas fa-arrow-down"></i></button>
+            <span class="proj-pos-badge">#${realIdx+1}/${projects.length}</span>
+        `;
+        card.appendChild(moveBar);
+
         // Header
         const hdr=document.createElement('div');
         hdr.className='tree-proj-hdr';
         hdr.innerHTML=`
           <div class="tree-proj-icon"><i class="fas fa-project-diagram"></i></div>
           <div class="tree-proj-title">
-            ${p.name}
+            ${escapeHtml(p.name)}
             <div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:4px;">
-              <span class="tag ${catCls}" style="font-size:9px;padding:2px 6px;">${p.category}</span>
+              <span class="tag ${catCls}" style="font-size:9px;padding:2px 6px;">${escapeHtml(p.category)}</span>
               <span class="tag" style="background:rgba(255,255,255,0.05);color:var(--muted);font-size:9px;padding:2px 6px;">${statusTxt}</span>
               ${p.priority==='high'?'<span class="tag" style="background:rgba(255,68,102,0.1);color:var(--red);font-size:9px;padding:2px 6px;">⚡ Visok</span>':''}
               ${phaseCount>0?`<span class="tag" style="background:rgba(255,170,34,0.1);color:var(--amber);font-size:9px;padding:2px 6px;"><i class="fas fa-layer-group"></i> ${phaseCount}</span>`:''}
@@ -1631,14 +1782,42 @@ function renderProjects(){
 
         if(activeSubs.length>0){
             const level=document.createElement('div');level.className='tree-level';
-            activeSubs.forEach(s=>{
+            activeSubs.forEach((s, subDispIdx)=>{
+                // Real index of subproject in master subprojects array
+                const realSubIdx = subs.findIndex(ss=>ss.id===s.id);
                 const sRow=document.createElement('div');sRow.className='tree-row';
+                sRow.draggable = true;
+                sRow.addEventListener('dragstart', (e)=>onSubDragStart(e, p.id, realSubIdx));
+                sRow.addEventListener('dragend', onSubDragEnd);
+                sRow.addEventListener('dragover', (e)=>onSubDragOver(e, p.id));
+                sRow.addEventListener('dragleave', onSubDragLeave);
+                sRow.addEventListener('drop', (e)=>onSubDrop(e, p.id, realSubIdx));
+
                 const sBox=document.createElement('div');sBox.className='tree-box';
+                // Drag handle ikona
+                const sGrip = document.createElement('span');
+                sGrip.className = 'sub-drag-handle';
+                sGrip.innerHTML = '<i class="fas fa-grip-vertical"></i>';
+                sGrip.title = 'Povucite da pomjerite podprojekt';
+                sBox.appendChild(sGrip);
+
                 const sCb=document.createElement('div');sCb.className='tree-cb'+(s.visible!==false?' on':'');
                 sCb.onclick=e=>{e.stopPropagation();toggleTreeVisible('sub',p.id,s.id);};
                 const sName=document.createElement('span');sName.className='tree-box-name';sName.textContent=s.name;
                 const sMeta=document.createElement('span');sMeta.className='tree-box-meta';sMeta.textContent=s.priority||'';
-                sBox.appendChild(sCb);sBox.appendChild(sName);sBox.appendChild(sMeta);sRow.appendChild(sBox);level.appendChild(sRow);
+
+                // Strelice za pomjeranje podprojekta
+                const sMoves = document.createElement('span');
+                sMoves.className = 'sub-move-controls';
+                sMoves.innerHTML = `
+                    <button class="sub-move-btn" onclick="event.stopPropagation();moveSubproject(${p.id},${s.id},-1)" title="Gore"><i class="fas fa-arrow-up"></i></button>
+                    <button class="sub-move-btn" onclick="event.stopPropagation();moveSubproject(${p.id},${s.id},1)" title="Dole"><i class="fas fa-arrow-down"></i></button>
+                    <span class="sub-pos-badge">${realSubIdx+1}/${subs.length}</span>
+                `;
+
+                sBox.appendChild(sCb);sBox.appendChild(sName);sBox.appendChild(sMeta);sBox.appendChild(sMoves);
+                sRow.appendChild(sBox);level.appendChild(sRow);
+
                 const acts=(s.activities||[]);
                 const visibleActs=acts.filter(a=>a.visible!==false);
                 const showHiddenActs=showHiddenMap['a_'+s.id];
@@ -1688,7 +1867,20 @@ function toggleTreeVisible(type,projId,subId,actId){
 
 function addActivity(projId,subId){ const p=projects.find(x=>x.id===projId);if(!p)return; const s=(p.subprojects||[]).find(x=>x.id===subId);if(!s)return; const inp=document.getElementById('actInp_'+subId);if(!inp)return; const name=inp.value.trim();if(!name){toast('Unesite naziv aktivnosti!','warning');return;} if(!s.activities)s.activities=[]; s.activities.push({id:Date.now()+Math.random(),name,visible:true,createdAt:new Date().toISOString()}); debouncedSave();renderProjects();toast(`"${name}" dodana!`,'success'); }
 
-function updateKPIs(){ document.getElementById('k-total').textContent=projects.length; document.getElementById('k-active').textContent=projects.filter(p=>p.status==='running').length; let tt=0;projects.forEach(p=>{tt+=(p.timeSpent||[]).reduce((s,e)=>s+e.hours,0);}); document.getElementById('k-time').textContent=tt+'h'; let tasks=0;projects.forEach(p=>{tasks+=(p.subprojects||[]).length;}); document.getElementById('k-tasks').textContent=tasks; document.getElementById('k-gantt').textContent=ganttDiagrams.length; let wc=0,wt=0;const ws=new Date(TODAY);ws.setDate(ws.getDate()-((ws.getDay()||7)-1)); habits.forEach(h=>{for(let i=0;i<7;i++){const d=new Date(ws);d.setDate(d.getDate()+i);const ds=d.toISOString().split('T')[0];wt++;if(h.days&&h.days[ds])wc++;}}); document.getElementById('k-week').textContent=wt>0?Math.round(wc/wt*100)+'%':'0%'; }
+function updateKPIs(){
+    const elTotal=document.getElementById('k-total');
+    if(elTotal) elTotal.textContent=projects.length;
+    let tasks=0;
+    projects.forEach(p=>{ tasks += (p.subprojects||[]).length; });
+    const elTasks=document.getElementById('k-tasks');
+    if(elTasks) elTasks.textContent=tasks;
+    // Stari KPI elementi (k-active, k-time, k-gantt, k-week) su uklonjeni iz HTML-a.
+    // Provjera postojanja sprječava grešku u slučaju buduće upotrebe.
+    const elA=document.getElementById('k-active');   if(elA) elA.textContent=projects.filter(p=>p.status==='running').length;
+    const elT=document.getElementById('k-time');     if(elT){ let tt=0; projects.forEach(p=>{ tt += (p.timeSpent||[]).reduce((s,e)=>s+e.hours,0); }); elT.textContent=tt+'h'; }
+    const elG=document.getElementById('k-gantt');    if(elG) elG.textContent=ganttDiagrams.length;
+    const elW=document.getElementById('k-week');     if(elW){ let wc=0,wt=0; const ws=new Date(TODAY); ws.setDate(ws.getDate()-((ws.getDay()||7)-1)); habits.forEach(h=>{ for(let i=0;i<7;i++){ const d=new Date(ws); d.setDate(d.getDate()+i); const ds=d.toISOString().split('T')[0]; wt++; if(h.days&&h.days[ds]) wc++; } }); elW.textContent = wt>0 ? Math.round(wc/wt*100)+'%' : '0%'; }
+}
 
 function openProjectSheet(editId){ editingProjId=editId||null; document.getElementById('projSheetTitle').textContent=editId?'Uredi projekt':'Novi projekt'; if(editId){const p=projects.find(x=>x.id===editId);if(!p)return;document.getElementById('pEditId').value=p.id;document.getElementById('pName').value=p.name;document.getElementById('pCat').value=p.category;document.getElementById('pStart').value=p.start.slice(0,16);document.getElementById('pEnd').value=p.end.slice(0,16);document.getElementById('pProg').value=p.progress;document.getElementById('pProgVal').textContent=p.progress+'%';document.getElementById('pStatus').value=p.status;document.getElementById('pBudget').value=p.budget||'';document.getElementById('pTeam').value=p.teamSize||'';document.getElementById('pPriority').value=p.priority||'medium';document.getElementById('pClient').value=p.client||'';}
 else{document.getElementById('pEditId').value='';document.getElementById('pName').value='';document.getElementById('pCat').value='';const now=new Date(TODAY.getFullYear(),TODAY.getMonth(),TODAY.getDate(),9,0);document.getElementById('pStart').value=now.toISOString().slice(0,16);const end=new Date(now);end.setMonth(end.getMonth()+1);document.getElementById('pEnd').value=end.toISOString().slice(0,16);document.getElementById('pProg').value=0;document.getElementById('pProgVal').textContent='0%';document.getElementById('pStatus').value='running';document.getElementById('pBudget').value='';document.getElementById('pTeam').value='';document.getElementById('pPriority').value='medium';document.getElementById('pClient').value='';}
@@ -1697,6 +1889,116 @@ function closeProjectSheet(){document.getElementById('projectSheet').classList.r
 function saveProject(){ const name=document.getElementById('pName').value.trim();const cat=document.getElementById('pCat').value.trim()||'Ostalo';const start=document.getElementById('pStart').value,end=document.getElementById('pEnd').value; if(!name||!start||!end){toast('Popunite obavezna polja!','warning');return;} const data={name,category:cat,start,end,progress:parseInt(document.getElementById('pProg').value),status:document.getElementById('pStatus').value,budget:parseInt(document.getElementById('pBudget').value)||0,teamSize:parseInt(document.getElementById('pTeam').value)||1,priority:document.getElementById('pPriority').value,riskLevel:'medium',satisfaction:7,complexity:5,client:document.getElementById('pClient').value.trim()}; if(editingProjId){const idx=projects.findIndex(p=>p.id===editingProjId);if(idx!==-1){Object.assign(projects[idx],data);toast(`"${name}" ažuriran!`,'success');}} else{const newId=Date.now();projects.push({id:newId,...data,timeSpent:[],subprojects:[],phases:[],createdAt:new Date().toISOString(),visible:true});if(!costPerProject[newId])costPerProject[newId]=[];toast(`"${name}" kreiran!`,'success');} debouncedSave();updateCalEvents();renderAll();closeProjectSheet(); }
 function editProject(id){openProjectSheet(id);}
 function deleteProject(id){ if(!confirm('Obrisati projekt?'))return; const p=projects.find(x=>x.id===id); projects=projects.filter(x=>x.id!==id);habits=habits.filter(h=>h.projectId!==id);delete timeTracking[id];delete costPerProject[id];delete collapseState[id];saveCollapseState(); if(activeCostContext&&activeCostContext.type==='project'&&activeCostContext.id===id){if(projects.length)activeCostContext={type:'project',id:projects[0].id};else if(customCosts.length)activeCostContext={type:'custom',id:customCosts[0].id};else activeCostContext=null;} debouncedSave();updateCalEvents();renderAll();toast(`"${p.name}" obrisan!`,'info'); }
+
+// ─────────────────────────────────────────────
+// PROJECT REORDERING (move up/down + drag&drop)
+// ─────────────────────────────────────────────
+function moveProject(id, direction){
+    const idx = projects.findIndex(p=>p.id===id);
+    if(idx===-1) return;
+    const newIdx = idx + direction;
+    if(newIdx < 0 || newIdx >= projects.length){
+        toast('Već je na krajnjoj poziciji.','info');
+        return;
+    }
+    const [item] = projects.splice(idx,1);
+    projects.splice(newIdx, 0, item);
+    debouncedSave();
+    renderProjects();
+    toast(`Projekt pomjeren ${direction<0?'gore':'dole'}.`, 'success');
+}
+
+function moveSubproject(projId, subId, direction){
+    const p = projects.find(x=>x.id===projId);
+    if(!p || !p.subprojects) return;
+    const idx = p.subprojects.findIndex(s=>s.id===subId);
+    if(idx===-1) return;
+    const newIdx = idx + direction;
+    if(newIdx < 0 || newIdx >= p.subprojects.length){
+        toast('Već je na krajnjoj poziciji.','info');
+        return;
+    }
+    const [item] = p.subprojects.splice(idx,1);
+    p.subprojects.splice(newIdx, 0, item);
+    debouncedSave();
+    renderProjects();
+    toast(`Podprojekt pomjeren ${direction<0?'gore':'dole'}.`,'success');
+}
+
+// Drag & Drop podrška za projekte
+let dragSrcProjIdx = null;
+let dragSrcSubInfo = null; // {projId, subIdx}
+
+function onProjDragStart(e, idx){
+    dragSrcProjIdx = idx;
+    e.dataTransfer.effectAllowed = 'move';
+    try{ e.dataTransfer.setData('text/plain', String(idx)); }catch(err){}
+    e.currentTarget.style.opacity='0.45';
+}
+function onProjDragEnd(e){
+    e.currentTarget.style.opacity='';
+    dragSrcProjIdx = null;
+    document.querySelectorAll('.drag-over-proj').forEach(el=>el.classList.remove('drag-over-proj'));
+}
+function onProjDragOver(e){
+    if(dragSrcProjIdx===null) return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect='move';
+    e.currentTarget.classList.add('drag-over-proj');
+}
+function onProjDragLeave(e){
+    e.currentTarget.classList.remove('drag-over-proj');
+}
+function onProjDrop(e, targetIdx){
+    e.preventDefault();
+    e.currentTarget.classList.remove('drag-over-proj');
+    if(dragSrcProjIdx===null || dragSrcProjIdx===targetIdx) return;
+    const [item] = projects.splice(dragSrcProjIdx, 1);
+    projects.splice(targetIdx, 0, item);
+    dragSrcProjIdx = null;
+    debouncedSave();
+    renderProjects();
+    toast('Pozicija projekta promijenjena.','success');
+}
+
+function onSubDragStart(e, projId, subIdx){
+    dragSrcSubInfo = {projId, subIdx};
+    e.dataTransfer.effectAllowed='move';
+    try{ e.dataTransfer.setData('text/plain', `sub:${projId}:${subIdx}`); }catch(err){}
+    e.currentTarget.style.opacity='0.45';
+    e.stopPropagation();
+}
+function onSubDragEnd(e){
+    e.currentTarget.style.opacity='';
+    dragSrcSubInfo = null;
+    document.querySelectorAll('.drag-over-sub').forEach(el=>el.classList.remove('drag-over-sub'));
+}
+function onSubDragOver(e, projId){
+    if(!dragSrcSubInfo || dragSrcSubInfo.projId!==projId) return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect='move';
+    e.currentTarget.classList.add('drag-over-sub');
+    e.stopPropagation();
+}
+function onSubDragLeave(e){
+    e.currentTarget.classList.remove('drag-over-sub');
+}
+function onSubDrop(e, projId, targetSubIdx){
+    e.preventDefault();
+    e.currentTarget.classList.remove('drag-over-sub');
+    e.stopPropagation();
+    if(!dragSrcSubInfo || dragSrcSubInfo.projId!==projId) return;
+    const p = projects.find(x=>x.id===projId);
+    if(!p || !p.subprojects) return;
+    const src = dragSrcSubInfo.subIdx;
+    if(src===targetSubIdx) return;
+    const [item] = p.subprojects.splice(src,1);
+    p.subprojects.splice(targetSubIdx, 0, item);
+    dragSrcSubInfo = null;
+    debouncedSave();
+    renderProjects();
+    toast('Pozicija podprojekta promijenjena.','success');
+}
 
 // ─────────────────────────────────────────────
 // HABITS
@@ -1741,12 +2043,349 @@ function saveCalendarTask(){const name=document.getElementById('ctName').value.t
 function deleteCalendarTask(id){calendarTasks=calendarTasks.filter(t=>t.id!==id);debouncedSave();renderCalendar();toast('Zadatak obrisan!','info');}
 
 // ─────────────────────────────────────────────
-// NAPOMENA
+// NAPOMENA — kreiranje, uređivanje, zakazivanje, preuzimanje (TXT/PDF)
 // ─────────────────────────────────────────────
-function saveNapomena(){ const from=document.getElementById('eFrom').value.trim(),to=document.getElementById('eTo').value.trim(),subject=document.getElementById('eSubject').value.trim(),body=document.getElementById('eBody').value.trim(); if(!subject&&!body){toast('Unesite naslov ili poruku!','warning');return null;} const id=Date.now();napomene.unshift({id,from,to,subject,body,date:new Date().toLocaleString('hr-HR'),scheduled:null,sent:false});debouncedSave();renderNapomenaList();return id; }
-function sendEmailNow(){const to=document.getElementById('eTo').value.trim();const subject=encodeURIComponent(document.getElementById('eSubject').value.trim());const body=encodeURIComponent(document.getElementById('eBody').value.trim());if(!to){toast('Unesite primatelja!','warning');return;}const id=saveNapomena();if(id){const n=napomene.find(x=>x.id===id);if(n)n.sent=true;debouncedSave();renderNapomenaList();}window.location.href=`mailto:${to}?subject=${subject}&body=${body}`;toast('Email klijent otvoren!','success');}
-function renderNapomenaList(){ const el=document.getElementById('napomenaList');document.getElementById('napomenaBadge').textContent=napomene.length; if(!napomene.length){el.innerHTML='<div class="empty"><i class="fas fa-inbox"></i><p>Nema sačuvanih napomena.</p></div>';return;} el.innerHTML=napomene.map(n=>`<div class="napomena-card"><div class="napomena-card-hdr"><div class="napomena-card-subject">${n.subject||'(bez naslova)'}</div><button class="napomena-del-btn" onclick="deleteNapomena(${n.id})"><i class="fas fa-trash"></i></button></div><div class="napomena-card-meta">${n.from?`<span>${n.from}</span>`:''}${n.to?`<span>→ ${n.to}</span>`:''}<span style="margin-left:auto;">${n.date}</span></div><div class="napomena-card-body">${n.body||''}</div></div>`).join(''); }
-function deleteNapomena(id){napomene=napomene.filter(n=>n.id!==id);scheduledEmails=scheduledEmails.filter(s=>s.napomenaId!==id);debouncedSave();renderNapomenaList();toast('Napomena obrisana!','info');}
+let editingNapId = null;
+
+function _readNapFormFields(){
+    return {
+        from:     document.getElementById('eFrom').value.trim(),
+        to:       document.getElementById('eTo').value.trim(),
+        subject:  document.getElementById('eSubject').value.trim(),
+        body:     document.getElementById('eBody').value.trim(),
+        scheduleAt: document.getElementById('eScheduleAt').value || null
+    };
+}
+function _clearNapForm(){
+    document.getElementById('eFrom').value='';
+    document.getElementById('eTo').value='';
+    document.getElementById('eSubject').value='';
+    document.getElementById('eBody').value='';
+    document.getElementById('eScheduleAt').value='';
+    document.getElementById('eEditId').value='';
+    editingNapId = null;
+    const cancelBtn=document.getElementById('cancelEditNapBtn');
+    if(cancelBtn) cancelBtn.style.display='none';
+    const saveBtn=document.getElementById('saveNapomenaBtn');
+    if(saveBtn) saveBtn.innerHTML='<i class="fas fa-save"></i> Sačuvaj';
+}
+
+// SPREMI ili AŽURIRAJ napomenu (jedno dugme, dva ponašanja)
+function saveOrUpdateNapomena(){
+    const f = _readNapFormFields();
+    if(!f.subject && !f.body){ toast('Unesite naslov ili poruku!','warning'); return null; }
+
+    if(editingNapId){
+        const idx = napomene.findIndex(n=>n.id===editingNapId);
+        if(idx!==-1){
+            napomene[idx] = {
+                ...napomene[idx],
+                from: f.from, to: f.to, subject: f.subject, body: f.body,
+                scheduled: f.scheduleAt,
+                date: new Date().toLocaleString('hr-HR') + ' (uređeno)'
+            };
+            toast('Napomena ažurirana!','success');
+        }
+        _clearNapForm();
+        debouncedSave();
+        renderNapomenaList();
+        return editingNapId;
+    }
+
+    const id = Date.now();
+    napomene.unshift({
+        id,
+        from: f.from, to: f.to, subject: f.subject, body: f.body,
+        date: new Date().toLocaleString('hr-HR'),
+        scheduled: f.scheduleAt,
+        sent: false
+    });
+    debouncedSave();
+    renderNapomenaList();
+    toast('Napomena sačuvana!','success');
+    if(f.scheduleAt) _scheduleLocalReminder(id, f.scheduleAt);
+    _clearNapForm();
+    return id;
+}
+
+// Zakaži email (mora imati Datum/Vrijeme + Primatelja)
+function scheduleNapomenaEmail(){
+    const f = _readNapFormFields();
+    if(!f.scheduleAt){ toast('Odaberite datum i vrijeme zakazivanja!','warning'); return; }
+    if(!f.to){ toast('Unesite primatelja za zakazivanje!','warning'); return; }
+    const when = new Date(f.scheduleAt);
+    if(isNaN(when.getTime())){ toast('Neispravan format datuma!','error'); return; }
+    if(when.getTime() < Date.now()){ toast('Zakazano vrijeme mora biti u budućnosti!','warning'); return; }
+    const id = saveOrUpdateNapomena();
+    if(id) toast(`Zakazano za ${when.toLocaleString('hr-HR')}`,'success');
+}
+
+// Lokalni podsjetnik (setTimeout) — radi samo dok je tab otvoren
+const _napTimers = {};
+function _scheduleLocalReminder(napId, isoStr){
+    const when = new Date(isoStr).getTime();
+    const delta = when - Date.now();
+    if(delta <= 0) return;
+    if(_napTimers[napId]) clearTimeout(_napTimers[napId]);
+    _napTimers[napId] = setTimeout(()=>{
+        const n = napomene.find(x=>x.id===napId);
+        if(!n) return;
+        _fireNapomenaReminder(n);
+    }, Math.min(delta, 2147483647)); // max setTimeout
+}
+
+function _fireNapomenaReminder(n){
+    // 1) Toast obavijest
+    toast(`⏰ Vrijeme za napomenu: "${n.subject||'(bez naslova)'}"`, 'info');
+    // 2) Browser notifikacija (ako je dozvoljena)
+    if('Notification' in window && Notification.permission === 'granted'){
+        try{
+            new Notification('📧 Zakazana napomena', {
+                body: (n.subject||'(bez naslova)') + (n.body ? '\n' + n.body.slice(0,140) : ''),
+                tag: 'nap_'+n.id
+            });
+        }catch(e){}
+    }
+    // 3) Otvori mailto link ako postoji primatelj
+    if(n.to){
+        const subj=encodeURIComponent(n.subject||'');
+        const body=encodeURIComponent(n.body||'');
+        // Otvori u novom prozoru/tabu (neki browseri blokiraju, korisnik mora kliknuti)
+        const w = window.open(`mailto:${encodeURIComponent(n.to)}?subject=${subj}&body=${body}`, '_blank');
+        if(!w){
+            // Fallback: prikaži dugme u toast-u
+            toast(`Klikni "Pošalji odmah" da otvoriš mail za "${n.subject||'napomenu'}"`,'warning');
+        } else {
+            // Označi kao poslano
+            n.sent = true;
+            n.scheduled = null;
+            debouncedSave();
+            renderNapomenaList();
+        }
+    }
+}
+
+// Provjera prilikom učitavanja: postavi sve preostale zakazane podsjetnike
+function _initScheduledReminders(){
+    if('Notification' in window && Notification.permission === 'default'){
+        // Tihi zahtjev — korisnik može odbiti, ali toast i mailto fallback i dalje rade
+        try { Notification.requestPermission(); } catch(e){}
+    }
+    napomene.forEach(n=>{
+        if(n.scheduled && !n.sent){
+            const when = new Date(n.scheduled).getTime();
+            if(when > Date.now()) _scheduleLocalReminder(n.id, n.scheduled);
+            else _fireNapomenaReminder(n); // zakasnili — okini odmah
+        }
+    });
+}
+
+// Pošalji odmah — istog momenta otvori mail klijent
+function sendEmailNow(){
+    const f = _readNapFormFields();
+    if(!f.to){ toast('Unesite primatelja!','warning'); return; }
+    const id = saveOrUpdateNapomena();
+    if(id){
+        const n = napomene.find(x=>x.id===id);
+        if(n){ n.sent = true; n.scheduled = null; debouncedSave(); renderNapomenaList(); }
+    }
+    const subj=encodeURIComponent(f.subject);
+    const body=encodeURIComponent(f.body);
+    window.location.href=`mailto:${encodeURIComponent(f.to)}?subject=${subj}&body=${body}`;
+    toast('Email klijent otvoren!','success');
+}
+
+function editNapomena(id){
+    const n = napomene.find(x=>x.id===id);
+    if(!n){ toast('Napomena nije pronađena.','error'); return; }
+    editingNapId = id;
+    document.getElementById('eEditId').value = id;
+    document.getElementById('eFrom').value = n.from || '';
+    document.getElementById('eTo').value = n.to || '';
+    document.getElementById('eSubject').value = n.subject || '';
+    document.getElementById('eBody').value = n.body || '';
+    document.getElementById('eScheduleAt').value = n.scheduled || '';
+    const saveBtn=document.getElementById('saveNapomenaBtn');
+    if(saveBtn) saveBtn.innerHTML='<i class="fas fa-check"></i> Ažuriraj';
+    const cancelBtn=document.getElementById('cancelEditNapBtn');
+    if(cancelBtn) cancelBtn.style.display='block';
+    // Skroluj na vrh forme
+    document.getElementById('mainScroll').scrollTop = 0;
+    toast(`Uređujete: ${n.subject||'(bez naslova)'}`,'info');
+}
+
+function cancelEditNapomena(){
+    _clearNapForm();
+    toast('Uređivanje otkazano.','info');
+}
+
+// PREUZMI napomenu kao TXT
+function downloadNapomenaTxt(id){
+    const n = napomene.find(x=>x.id===id);
+    if(!n) return;
+    const lines = [
+        '=== NAPOMENA ===',
+        '',
+        'Od: ' + (n.from||'—'),
+        'Za: ' + (n.to||'—'),
+        'Naslov: ' + (n.subject||'(bez naslova)'),
+        'Datum kreiranja: ' + (n.date||''),
+        n.scheduled ? 'Zakazano za: ' + new Date(n.scheduled).toLocaleString('hr-HR') : '',
+        n.sent ? 'Status: POSLATO' : (n.scheduled ? 'Status: ZAKAZANO' : 'Status: SAČUVANO'),
+        '',
+        '--- Poruka ---',
+        n.body || ''
+    ].filter(l => l !== '');
+    const blob = new Blob([lines.join('\n')], {type:'text/plain;charset=utf-8'});
+    const safeName = (n.subject||'napomena').replace(/[^\w\u00C0-\u017F -]+/g,'_').slice(0,50) || 'napomena';
+    download(blob, safeName + '_' + n.id + '.txt');
+    toast('TXT preuzet!','success');
+}
+
+// PREUZMI napomenu kao PDF (koristi pdf-lib koji već učitavamo)
+async function downloadNapomenaPdf(id){
+    const n = napomene.find(x=>x.id===id);
+    if(!n) return;
+    showProgress('Kreiram PDF napomene...', 30);
+    try{
+        if(typeof PDFLib === 'undefined'){
+            await loadScript('https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js');
+        }
+        const { PDFDocument, rgb, StandardFonts } = PDFLib;
+        const pdf = await PDFDocument.create();
+        const page = pdf.addPage([595, 842]); // A4
+        const fontReg = await pdf.embedFont(StandardFonts.Helvetica);
+        const fontBold = await pdf.embedFont(StandardFonts.HelveticaBold);
+
+        let y = 800;
+        const drawText = (txt, opts={}) => {
+            const f = opts.bold ? fontBold : fontReg;
+            const size = opts.size || 11;
+            const color = opts.color || rgb(0.1, 0.1, 0.1);
+            // word wrap na 80 znakova
+            const lines = String(txt||'').split('\n').flatMap(line => {
+                const words = line.split(' ');
+                const out = [];
+                let cur = '';
+                words.forEach(w => {
+                    const next = cur ? cur + ' ' + w : w;
+                    if(next.length > 80){ if(cur) out.push(cur); cur = w; }
+                    else cur = next;
+                });
+                if(cur) out.push(cur);
+                return out.length ? out : [''];
+            });
+            lines.forEach(line => {
+                if(y < 50){ const p2 = pdf.addPage([595,842]); y = 800; }
+                page.drawText(line, { x: 50, y, size, font: f, color });
+                y -= (size + 5);
+            });
+            y -= 4;
+        };
+
+        drawText('NAPOMENA', { size: 20, bold: true, color: rgb(0.27, 0.53, 1) });
+        y -= 4;
+        drawText('Od:        ' + (n.from || '—'), { size: 11 });
+        drawText('Za:        ' + (n.to || '—'), { size: 11 });
+        drawText('Naslov:    ' + (n.subject || '(bez naslova)'), { size: 12, bold: true });
+        drawText('Datum:     ' + (n.date || ''), { size: 10, color: rgb(0.4,0.4,0.4) });
+        if(n.scheduled) drawText('Zakazano:  ' + new Date(n.scheduled).toLocaleString('hr-HR'), { size: 10, color: rgb(1, 0.66, 0.13) });
+        const stat = n.sent ? 'POSLATO' : (n.scheduled ? 'ZAKAZANO' : 'SAČUVANO');
+        drawText('Status:    ' + stat, { size: 10, bold: true });
+
+        y -= 10;
+        // Linija
+        page.drawRectangle({ x: 50, y: y, width: 495, height: 1, color: rgb(0.7,0.7,0.7) });
+        y -= 14;
+        drawText('Poruka:', { size: 12, bold: true });
+        drawText(n.body || '(prazno)', { size: 11 });
+
+        const bytes = await pdf.save();
+        const safeName = (n.subject||'napomena').replace(/[^\w\u00C0-\u017F -]+/g,'_').slice(0,50) || 'napomena';
+        download(new Blob([bytes], {type:'application/pdf'}), safeName + '_' + n.id + '.pdf');
+        showProgress('Gotovo!', 100);
+        setTimeout(hideProgress, 400);
+        toast('PDF napomene preuzet!','success');
+    }catch(err){
+        console.error(err);
+        toast('Greška pri kreiranju PDF-a — preuzimam TXT umjesto.','warning');
+        downloadNapomenaTxt(id);
+        hideProgress();
+    }
+}
+
+// "Pošalji ponovo" za već sačuvanu napomenu
+function resendNapomenaEmail(id){
+    const n = napomene.find(x=>x.id===id);
+    if(!n) return;
+    if(!n.to){ toast('Nema primatelja u ovoj napomeni — uredite je.','warning'); return; }
+    const subj=encodeURIComponent(n.subject||'');
+    const body=encodeURIComponent(n.body||'');
+    window.location.href=`mailto:${encodeURIComponent(n.to)}?subject=${subj}&body=${body}`;
+    n.sent = true;
+    debouncedSave();
+    renderNapomenaList();
+    toast('Email klijent otvoren!','success');
+}
+
+function renderNapomenaList(){
+    const el=document.getElementById('napomenaList');
+    if(!el) return;
+    const badge=document.getElementById('napomenaBadge');
+    if(badge) badge.textContent=napomene.length;
+    const schedBadge=document.getElementById('schedBadge');
+    const scheduledCount = napomene.filter(n=>n.scheduled && !n.sent).length;
+    if(schedBadge){
+        if(scheduledCount > 0){
+            schedBadge.style.display='inline-block';
+            schedBadge.textContent = scheduledCount + ' zakazano';
+        } else {
+            schedBadge.style.display='none';
+        }
+    }
+    if(!napomene.length){
+        el.innerHTML='<div class="empty"><i class="fas fa-inbox"></i><p>Nema sačuvanih napomena.</p></div>';
+        return;
+    }
+    el.innerHTML = napomene.map(n => {
+        const schedTag = n.scheduled && !n.sent
+            ? `<span class="scheduled-tag"><i class="fas fa-clock"></i> Zakazano: ${new Date(n.scheduled).toLocaleString('hr-HR')}</span>`
+            : '';
+        const sentTag = n.sent ? `<span class="sent-tag"><i class="fas fa-check"></i> Poslato</span>` : '';
+        return `
+        <div class="napomena-card">
+            <div class="napomena-card-hdr">
+                <div class="napomena-card-subject">${escapeHtml(n.subject||'(bez naslova)')}</div>
+                <button class="napomena-del-btn" onclick="deleteNapomena(${n.id})" title="Obriši"><i class="fas fa-trash"></i></button>
+            </div>
+            <div class="napomena-card-meta">
+                ${n.from?`<span><i class="fas fa-user"></i> ${escapeHtml(n.from)}</span>`:''}
+                ${n.to?`<span><i class="fas fa-paper-plane"></i> → ${escapeHtml(n.to)}</span>`:''}
+                <span style="margin-left:auto;">${escapeHtml(n.date||'')}</span>
+            </div>
+            ${schedTag || sentTag ? `<div style="display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap;">${schedTag}${sentTag}</div>`:''}
+            <div class="napomena-card-body">${escapeHtml(n.body||'')}</div>
+            <div class="napomena-actions">
+                <button class="nap-act-btn edit" onclick="editNapomena(${n.id})"><i class="fas fa-edit"></i> Uredi</button>
+                <button class="nap-act-btn txt" onclick="downloadNapomenaTxt(${n.id})"><i class="fas fa-file-alt"></i> TXT</button>
+                <button class="nap-act-btn pdf" onclick="downloadNapomenaPdf(${n.id})"><i class="fas fa-file-pdf"></i> PDF</button>
+                ${n.to ? `<button class="nap-act-btn send" onclick="resendNapomenaEmail(${n.id})"><i class="fas fa-paper-plane"></i> Pošalji</button>`:''}
+            </div>
+        </div>`;
+    }).join('');
+}
+
+function deleteNapomena(id){
+    if(!confirm('Obrisati napomenu?')) return;
+    napomene = napomene.filter(n=>n.id!==id);
+    if(_napTimers[id]){ clearTimeout(_napTimers[id]); delete _napTimers[id]; }
+    debouncedSave();
+    renderNapomenaList();
+    toast('Napomena obrisana!','info');
+}
+
+// LEGACY aliases (kompatibilnost sa starim pozivima)
+function saveNapomena(){ return saveOrUpdateNapomena(); }
 
 // ─────────────────────────────────────────────
 // TIME
@@ -1771,16 +2410,116 @@ function renderDashCharts(){ document.getElementById('dTotal').textContent=proje
 // TROŠKOVNIK
 // ─────────────────────────────────────────────
 function getCostCurrentItems(){if(!activeCostContext)return[];if(activeCostContext.type==='project'){return costPerProject[activeCostContext.id]||[];}else{const found=customCosts.find(c=>c.id===activeCostContext.id);return found?found.items:[];}}
-function setCostCurrentItems(newItems){if(!activeCostContext)return;if(activeCostContext.type==='project'){costPerProject[activeCostContext.id]=newItems;}else{const idx=customCosts.findIndex(c=>c.id===activeCostContext.id);if(idx!==-1)customCosts[idx].items=newItems;}debouncedSave();renderCostTableAndKpi();renderCostWeeklyChart();}
+function setCostCurrentItems(newItems){if(!activeCostContext)return;if(activeCostContext.type==='project'){costPerProject[activeCostContext.id]=newItems;}else{const idx=customCosts.findIndex(c=>c.id===activeCostContext.id);if(idx!==-1)customCosts[idx].items=newItems;}debouncedSave();renderCostTableAndKpi();}
 function getCostContextLabel(){if(!activeCostContext)return'—';if(activeCostContext.type==='project'){const p=projects.find(pj=>pj.id===activeCostContext.id);return p?p.name:'projekt';}else{const c=customCosts.find(ct=>ct.id===activeCostContext.id);return c?c.name:'troškovnik';}}
 function renderCostTabs(){ const container=document.getElementById('costTabsContainer');if(!container)return; let html=''; projects.forEach(proj=>{const isActive=(activeCostContext&&activeCostContext.type==='project'&&activeCostContext.id===proj.id);html+=`<div class="cost-tab ${isActive?'active':''}" data-cost-type="project" data-cost-id="${proj.id}"><i class="fas fa-diagram-project"></i> ${escapeHtml(proj.name)}</div>`;}); customCosts.forEach(cust=>{const isActive=(activeCostContext&&activeCostContext.type==='custom'&&activeCostContext.id===cust.id);html+=`<div class="cost-tab custom-tab ${isActive?'active':''}" data-cost-type="custom" data-cost-id="${cust.id}"><i class="fas fa-folder"></i> ${escapeHtml(cust.name)} <span class="tab-delete-icon" data-del-custom="${cust.id}"><i class="fas fa-times-circle"></i></span></div>`;}); container.innerHTML=html; container.querySelectorAll('.cost-tab').forEach(tab=>{tab.addEventListener('click',(e)=>{if(e.target.closest('.tab-delete-icon'))return;const type=tab.dataset.costType;const id=type==='project'?parseInt(tab.dataset.costId):tab.dataset.costId;activeCostContext={type,id};renderCostAll();});}); container.querySelectorAll('.tab-delete-icon').forEach(delSpan=>{delSpan.addEventListener('click',(e)=>{e.stopPropagation();const custId=delSpan.dataset.delCustom;if(custId&&confirm('Obrisati ovaj troškovnik?')){customCosts=customCosts.filter(c=>c.id!==custId);if(activeCostContext&&activeCostContext.type==='custom'&&activeCostContext.id===custId){if(projects.length)activeCostContext={type:'project',id:projects[0].id};else if(customCosts.length)activeCostContext={type:'custom',id:customCosts[0].id};else activeCostContext=null;}debouncedSave();renderCostAll();toast('Troškovnik izbrisan!','info');}});}); }
-function renderCostTableAndKpi(){ const items=getCostCurrentItems();const total=items.reduce((s,i)=>s+(parseFloat(i.amount)||0),0);const avg=items.length?total/items.length:0; document.getElementById('totalCostKpi').innerText=total.toLocaleString('hr-HR',{minimumFractionDigits:2})+'€';document.getElementById('totalItemsKpi').innerText=items.length;document.getElementById('avgCostKpi').innerText=avg.toLocaleString('hr-HR',{minimumFractionDigits:2})+'€'; const tbody=document.getElementById('costTableBody'); if(!items.length){tbody.innerHTML=`<tr><td colspan="9" style="text-align:center;padding:20px;color:var(--muted);font-size:12px;">📭 Nema stavki.</td></tr>`;return;} let rows=''; items.forEach(item=>{rows+=`<tr><td><span class="cost-src-badge">${escapeHtml(item.source||'Ručno')}</span></td><td><strong>${escapeHtml(item.name)}</strong></td><td>${escapeHtml(item.category||'—')}</td><td><input type="number" step="any" class="cost-inline-input" data-cost-id="${item.id}" data-cost-field="qty" value="${item.qty||0}"></td><td><input type="number" step="0.01" class="cost-inline-input" data-cost-id="${item.id}" data-cost-field="price" value="${item.price||0}"></td><td><input type="number" step="0.01" class="cost-inline-input" style="background:#2a2410;" data-cost-id="${item.id}" data-cost-field="amount" value="${(parseFloat(item.amount)||0).toFixed(2)}"></td><td><input type="date" class="cost-inline-input cost-inline-date" data-cost-id="${item.id}" data-cost-field="date" value="${item.date||''}"></td><td><input type="text" class="cost-inline-input" data-cost-id="${item.id}" data-cost-field="note" value="${escapeHtml(item.note||'')}" placeholder="napomena"></td><td><button class="cost-del-btn-icon" data-cost-del-id="${item.id}"><i class="fas fa-trash-alt"></i></button></td></tr>`;}); tbody.innerHTML=rows; tbody.querySelectorAll('.cost-inline-input').forEach(inp=>{inp.addEventListener('change',()=>{const id=parseInt(inp.dataset.costId);const field=inp.dataset.costField;let itemsArr=getCostCurrentItems();const idx=itemsArr.findIndex(i=>i.id===id);if(idx===-1)return;if(field==='qty')itemsArr[idx].qty=parseFloat(inp.value)||0;else if(field==='price')itemsArr[idx].price=parseFloat(inp.value)||0;else if(field==='amount')itemsArr[idx].amount=parseFloat(inp.value)||0;else if(field==='date')itemsArr[idx].date=inp.value;else if(field==='note')itemsArr[idx].note=inp.value;if(field==='qty'||field==='price'){const q=itemsArr[idx].qty||0;const p=itemsArr[idx].price||0;if(q>0&&p>0)itemsArr[idx].amount=+(q*p).toFixed(2);else if(p>0&&q===0)itemsArr[idx].amount=p;}setCostCurrentItems(itemsArr);});}); tbody.querySelectorAll('.cost-del-btn-icon').forEach(btn=>{btn.addEventListener('click',()=>{const delId=parseInt(btn.dataset.costDelId);setCostCurrentItems(getCostCurrentItems().filter(i=>i.id!==delId));toast('Stavka uklonjena!','info');});}); }
-function renderCostWeeklyChart(){ const items=getCostCurrentItems();const weeklyMap=new Map(); items.forEach(item=>{if(!item.date)return;const d=new Date(item.date);if(isNaN(d.getTime()))return;const week=getCostWeekNumber(d);const yearWeek=`${d.getFullYear()}-W${week}`;const amt=parseFloat(item.amount)||0;weeklyMap.set(yearWeek,(weeklyMap.get(yearWeek)||0)+amt);}); const sortedWeeks=Array.from(weeklyMap.keys()).sort();const lastWeeks=sortedWeeks.slice(-10);const labels=lastWeeks.map(w=>`Tj ${w.split('-W')[1]}`);const data=lastWeeks.map(w=>weeklyMap.get(w)); const canvas=document.getElementById('weeklyCostTrendChart');if(costChartInstance)costChartInstance.destroy(); costChartInstance=new Chart(canvas.getContext('2d'),{type:'bar',data:{labels:labels.length?labels:['Nema podataka'],datasets:[{label:'Ukupni trošak (€)',data:labels.length?data:[0],backgroundColor:'rgba(255,170,34,0.7)',borderRadius:8,barPercentage:0.65}]},options:{responsive:true,maintainAspectRatio:true,plugins:{tooltip:{callbacks:{label:(ctx)=>`${ctx.raw.toFixed(2)} €`}},legend:{labels:{color:'#ccc',font:{size:11}}}},scales:{y:{beginAtZero:true,grid:{color:'rgba(255,255,255,0.05)'},ticks:{color:'#aaa',callback:(v)=>v+'€'}},x:{ticks:{color:'#aaa',font:{size:10}},grid:{display:false}}}}}); }
+function renderCostTableAndKpi(){
+    const items=getCostCurrentItems();
+    const total=items.reduce((s,i)=>s+(parseFloat(i.amount)||0),0);
+    const avg=items.length?total/items.length:0;
+    const totalEl=document.getElementById('totalCostKpi');
+    const itemsEl=document.getElementById('totalItemsKpi');
+    const avgEl=document.getElementById('avgCostKpi');
+    if(totalEl) totalEl.innerText=total.toLocaleString('hr-HR',{minimumFractionDigits:2})+'€';
+    if(itemsEl) itemsEl.innerText=items.length;
+    if(avgEl)   avgEl.innerText=avg.toLocaleString('hr-HR',{minimumFractionDigits:2})+'€';
+
+    const tbody=document.getElementById('costTableBody');
+    if(!tbody) return;
+    if(!items.length){
+        tbody.innerHTML=`<tr><td colspan="9" style="text-align:center;padding:20px;color:var(--muted);font-size:12px;">📭 Nema stavki.</td></tr>`;
+        return;
+    }
+    let rows='';
+    items.forEach(item=>{
+        // FIX: ID je float (Date.now()+Math.random()*1000) → koristimo String, ne parseInt
+        const itemId = String(item.id);
+        rows += `<tr>
+            <td><span class="cost-src-badge">${escapeHtml(item.source||'Ručno')}</span></td>
+            <td><strong>${escapeHtml(item.name)}</strong></td>
+            <td>${escapeHtml(item.category||'—')}</td>
+            <td><input type="number" step="any" class="cost-inline-input" data-cost-id="${itemId}" data-cost-field="qty" value="${item.qty||0}"></td>
+            <td><input type="number" step="0.01" class="cost-inline-input" data-cost-id="${itemId}" data-cost-field="price" value="${item.price||0}"></td>
+            <td><input type="number" step="0.01" class="cost-inline-input cost-amount-cell" data-cost-id="${itemId}" data-cost-field="amount" value="${(parseFloat(item.amount)||0).toFixed(2)}" style="background:#2a2410;color:var(--amber);font-weight:700;"></td>
+            <td><input type="date" class="cost-inline-input cost-inline-date" data-cost-id="${itemId}" data-cost-field="date" value="${item.date||''}"></td>
+            <td><input type="text" class="cost-inline-input" data-cost-id="${itemId}" data-cost-field="note" value="${escapeHtml(item.note||'')}" placeholder="napomena"></td>
+            <td><button class="cost-del-btn-icon" data-cost-del-id="${itemId}"><i class="fas fa-trash-alt"></i></button></td>
+        </tr>`;
+    });
+    tbody.innerHTML=rows;
+
+    // === FIX: koristimo 'input' event (živo praćenje) + 'change' kao backup ===
+    // Helper koji pronalazi stavku po stringu ID-ja (radi i za float ID-eve)
+    const findItemIdx = (arr, idStr) => arr.findIndex(i => String(i.id) === String(idStr));
+
+    const handleCostInput = (inp, eventType) => {
+        const idStr = inp.dataset.costId;
+        const field = inp.dataset.costField;
+        let itemsArr = getCostCurrentItems();
+        const idx = findItemIdx(itemsArr, idStr);
+        if(idx === -1) return;
+
+        // Trenutni redak DOM-a (da nadogradimo Iznos cell uživo)
+        const row = inp.closest('tr');
+        const amountCell = row ? row.querySelector('.cost-amount-cell') : null;
+
+        if(field === 'qty')        itemsArr[idx].qty   = parseFloat(inp.value) || 0;
+        else if(field === 'price') itemsArr[idx].price = parseFloat(inp.value) || 0;
+        else if(field === 'amount')itemsArr[idx].amount= parseFloat(inp.value) || 0;
+        else if(field === 'date')  itemsArr[idx].date  = inp.value;
+        else if(field === 'note')  itemsArr[idx].note  = inp.value;
+
+        // Auto-preračun Iznosa kad se mijenja količina ili cijena
+        if(field === 'qty' || field === 'price'){
+            const q = itemsArr[idx].qty   || 0;
+            const p = itemsArr[idx].price || 0;
+            let newAmount;
+            if(q > 0 && p > 0)        newAmount = +(q * p).toFixed(2);
+            else if(p > 0 && q === 0) newAmount = +parseFloat(p).toFixed(2);
+            else                       newAmount = 0;
+            itemsArr[idx].amount = newAmount;
+            // Uživo ažuriraj Iznos polje u tabeli (bez ponovnog renderiranja cijele tabele)
+            if(amountCell) amountCell.value = newAmount.toFixed(2);
+        }
+
+        // Spasi i osvježi KPI/Ukupno bez ponovnog gradjenja cijele tabele (ostaje focus na inputu)
+        if(activeCostContext){
+            if(activeCostContext.type==='project') costPerProject[activeCostContext.id]=itemsArr;
+            else {
+                const cidx=customCosts.findIndex(c=>c.id===activeCostContext.id);
+                if(cidx!==-1) customCosts[cidx].items=itemsArr;
+            }
+        }
+        // Uživo ažuriraj KPI brojeve
+        const t = itemsArr.reduce((s,i)=>s+(parseFloat(i.amount)||0),0);
+        const a = itemsArr.length ? t/itemsArr.length : 0;
+        if(totalEl) totalEl.innerText = t.toLocaleString('hr-HR',{minimumFractionDigits:2})+'€';
+        if(itemsEl) itemsEl.innerText = itemsArr.length;
+        if(avgEl)   avgEl.innerText   = a.toLocaleString('hr-HR',{minimumFractionDigits:2})+'€';
+
+        // Spremanje na backend uz debounce
+        debouncedSave();
+    };
+
+    tbody.querySelectorAll('.cost-inline-input').forEach(inp=>{
+        inp.addEventListener('input',  ()=>handleCostInput(inp, 'input'));
+        inp.addEventListener('change', ()=>handleCostInput(inp, 'change'));
+    });
+    tbody.querySelectorAll('.cost-del-btn-icon').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+            const idStr=btn.dataset.costDelId;
+            const arr=getCostCurrentItems().filter(i=>String(i.id)!==String(idStr));
+            setCostCurrentItems(arr);
+            toast('Stavka uklonjena!','info');
+        });
+    });
+}
+function renderCostWeeklyChart(){ /* Grafikon "Rast troškova po tjednima" je uklonjen po zahtjevu — funkcija ostavljena kao no-op da starije pozive ne sruši. */ }
 function getCostWeekNumber(date){const d=new Date(Date.UTC(date.getFullYear(),date.getMonth(),date.getDate()));const dayNum=d.getUTCDay()||7;d.setUTCDate(d.getUTCDate()+4-dayNum);const yearStart=new Date(Date.UTC(d.getUTCFullYear(),0,1));return Math.ceil((((d-yearStart)/86400000)+1)/7);}
 function addCostItem(){ if(!activeCostContext){toast('Prvo odaberite projekt ili troškovnik','warning');return;} const name=document.getElementById('costItemName').value.trim();if(!name){toast('Unesite naziv stavke','warning');return;} const category=document.getElementById('costItemCategory').value;let qty=parseFloat(document.getElementById('costItemQty').value)||0;let price=parseFloat(document.getElementById('costItemPrice').value)||0;let amount=parseFloat(document.getElementById('costItemAmount').value)||0; if(qty>0&&price>0)amount=qty*price;else if(price>0&&amount===0)amount=price; const date=document.getElementById('costItemDate').value||TODAY.toISOString().split('T')[0];const note=document.getElementById('costItemNote').value; const newItem={id:Date.now()+Math.random()*1000,source:'manual',name,category,qty,price,amount:parseFloat(amount).toFixed(2),date,note,createdAt:new Date().toISOString()}; const currentItems=getCostCurrentItems();currentItems.push(newItem);setCostCurrentItems(currentItems); document.getElementById('costItemName').value='';document.getElementById('costItemQty').value='1';document.getElementById('costItemPrice').value='';document.getElementById('costItemAmount').value='';document.getElementById('costItemNote').value='';document.getElementById('costItemDate').value=TODAY.toISOString().split('T')[0]; toast('Stavka dodana!','success'); }
 function createCustomCost(){let newName=prompt('Naziv novog troškovnika:','Npr. Sezonski troškovi');if(!newName)return;const newId='custom_'+Date.now();customCosts.push({id:newId,name:newName,items:[]});activeCostContext={type:'custom',id:newId};debouncedSave();renderCostAll();toast('Troškovnik kreiran!','success');}
 function previewCostAmount(){const q=parseFloat(document.getElementById('costItemQty').value)||0;const p=parseFloat(document.getElementById('costItemPrice').value)||0;if(q>0&&p>0)document.getElementById('costItemAmount').value=(q*p).toFixed(2);else if(p>0)document.getElementById('costItemAmount').value=p.toFixed(2);else document.getElementById('costItemAmount').value='';}
-function renderCostAll(){if(!activeCostContext&&projects.length)activeCostContext={type:'project',id:projects[0].id};else if(!activeCostContext&&customCosts.length)activeCostContext={type:'custom',id:customCosts[0].id};document.getElementById('activeCostContextLabel').innerText=getCostContextLabel();renderCostTabs();renderCostTableAndKpi();renderCostWeeklyChart();}
+function renderCostAll(){if(!activeCostContext&&projects.length)activeCostContext={type:'project',id:projects[0].id};else if(!activeCostContext&&customCosts.length)activeCostContext={type:'custom',id:customCosts[0].id};const lbl=document.getElementById('activeCostContextLabel');if(lbl)lbl.innerText=getCostContextLabel();renderCostTabs();renderCostTableAndKpi();/* renderCostWeeklyChart više nije potreban */}
 
 // ─────────────────────────────────────────────
 // FAB + EXCEL
@@ -1790,40 +2529,291 @@ function closeFAB(){document.getElementById('fabOverlay').classList.remove('open
 function exportToExcel(){ try{ const wb=XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([['Projekt','Kategorija','Početak','Kraj','Napredak','Status','Budžet','Tim'],...projects.map(p=>[p.name,p.category,p.start,p.end,p.progress+'%',p.status,p.budget||0,p.teamSize||0])]),'Projekti'); XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([['Zadatak','Kategorija','Projekt','Završeno dana'],...habits.map(h=>[h.name,h.category,h.projectName||'',Object.keys(h.days||{}).length])]),'Habit Tracker'); if(ganttDiagrams.length)XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([['Gantt','Početak','Kraj','Zadataka'],...ganttDiagrams.map(g=>[g.name,g.projectStart,g.projectEnd,(g.tasks||[]).length])]),'Gantt'); if(napomene.length)XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([['Od','Za','Naslov','Poruka','Datum'],...napomene.map(n=>[n.from,n.to,n.subject,n.body,n.date])]),'Napomene'); const allCostItems=[];Object.entries(costPerProject).forEach(([projId,items])=>{const p=projects.find(pj=>pj.id===parseInt(projId));items.forEach(i=>allCostItems.push([p?p.name:'Projekt '+projId,i.name,i.category,i.qty,i.price,i.amount,i.date,i.note]));});customCosts.forEach(ct=>{ct.items.forEach(i=>allCostItems.push([ct.name,i.name,i.category,i.qty,i.price,i.amount,i.date,i.note]));}); if(allCostItems.length)XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([['Izvor','Naziv','Kategorija','Količina','Cijena','Iznos','Datum','Bilješka'],...allCostItems]),'Troškovnik'); XLSX.writeFile(wb,`Dashboard_${TODAY.toISOString().slice(0,10)}.xlsx`);toast('Excel preuzet!','success'); }catch(e){toast('Greška!','error');} }
 
 // ─────────────────────────────────────────────
-// PDF / UČENJE  (unchanged from original)
+// UČENJE — Auto PDF→TXT konverzija + opcionalan audio
 // ─────────────────────────────────────────────
-function handlePdfUpload(event){const file=event.target.files[0];if(!file)return;loadPdfFile(file);}
-async function loadPdfFile(file){ if(file.type!=='application/pdf'&&!file.name.toLowerCase().endsWith('.pdf')){toast('Molimo učitajte PDF fajl!','warning');return;} showProgress('Učitavam PDF...',10); pdfFileName=file.name;pdfAnnotations={};audioBlob=null;document.getElementById('audioPlayerCard').style.display='none'; try{ pdfArrayBuffer=await file.arrayBuffer();showProgress('Parsiram stranice...',40); if(typeof pdfjsLib==='undefined'){toast('PDF.js nije učitan.','error');hideProgress();return;} pdfDoc=await pdfjsLib.getDocument({data:pdfArrayBuffer.slice(0)}).promise;pdfTotalPages=pdfDoc.numPages;pdfCurrentPage=1;showProgress('Ekstrahujem tekst...',65); pdfExtractedText=''; for(let i=1;i<=pdfTotalPages;i++){const page=await pdfDoc.getPage(i);const content=await page.getTextContent();pdfExtractedText+=`\n\n--- Stranica ${i} ---\n`;pdfExtractedText+=content.items.map(s=>s.str).join(' ');} const words=pdfExtractedText.trim().split(/\s+/).filter(w=>w.length>0).length; showProgress('Renderujem stranicu...',85);await renderPdfPage(pdfCurrentPage);showProgress('Gotovo!',100); document.getElementById('pdfFileInfo').style.display='flex';document.getElementById('pdfFileName').textContent=pdfFileName;document.getElementById('pdfFileMeta').textContent=`${pdfTotalPages} stranica • ${words.toLocaleString()} riječi`;document.getElementById('ucenjeToolbar').style.display='flex';document.getElementById('annotToolbar').style.display='flex';document.getElementById('pdfPageNav').style.display='flex';document.getElementById('pdfViewerWrap').style.display='block';document.getElementById('uk-pages').textContent=pdfTotalPages;document.getElementById('uk-words').textContent=words>999?Math.round(words/1000)+'k':words;updateAnnotCount();setupAnnotationCanvas();setTimeout(hideProgress,400);toast(`"${pdfFileName}" učitan! ${pdfTotalPages} stranica.`,'success'); }catch(err){console.error(err);toast('Greška pri učitavanju PDF-a: '+err.message,'error');hideProgress();} }
-async function renderPdfPage(pageNum){ if(!pdfDoc)return;const page=await pdfDoc.getPage(pageNum);const canvas=document.getElementById('pdfCanvas');const container=document.getElementById('pdfPageContainer');const containerWidth=container.parentElement.offsetWidth||350;const viewport=page.getViewport({scale:1});const scale=(containerWidth-4)/viewport.width;const scaledViewport=page.getViewport({scale});canvas.width=scaledViewport.width;canvas.height=scaledViewport.height;canvas.style.width='100%';const ctx=canvas.getContext('2d');await page.render({canvasContext:ctx,viewport:scaledViewport}).promise;const aCanvas=document.getElementById('annotCanvas');aCanvas.width=canvas.width;aCanvas.height=canvas.height;aCanvas.style.width=canvas.style.width;aCanvas.style.height=canvas.style.height||canvas.height+'px';document.getElementById('pdfPageLabel').textContent=`Str. ${pageNum} / ${pdfTotalPages}`;pdfScale=scale;redrawAnnotations(pageNum); }
-function setupAnnotationCanvas(){ const aCanvas=document.getElementById('annotCanvas');const fresh=aCanvas.cloneNode(true);aCanvas.parentNode.replaceChild(fresh,aCanvas);const ac=document.getElementById('annotCanvas');ac.addEventListener('mousedown',annotMouseDown);ac.addEventListener('mousemove',annotMouseMove);ac.addEventListener('mouseup',annotMouseUp);ac.addEventListener('touchstart',annotTouchStart,{passive:false});ac.addEventListener('touchmove',annotTouchMove,{passive:false});ac.addEventListener('touchend',annotTouchEnd,{passive:false}); }
-function annotTouchStart(e){e.preventDefault();const t=e.touches[0];const r=e.currentTarget.getBoundingClientRect();annotMouseDown({offsetX:t.clientX-r.left,offsetY:t.clientY-r.top,currentTarget:e.currentTarget});}
-function annotTouchMove(e){e.preventDefault();const t=e.touches[0];const r=e.currentTarget.getBoundingClientRect();annotMouseMove({offsetX:t.clientX-r.left,offsetY:t.clientY-r.top,currentTarget:e.currentTarget});}
-function annotTouchEnd(e){e.preventDefault();annotMouseUp({});}
-function annotMouseDown(e){ if(!annotMode)return; if(annotMode==='note'){currentNotePos={x:e.offsetX,y:e.offsetY};const popup=document.getElementById('notePopup');popup.style.left=Math.min(e.offsetX,document.getElementById('pdfCanvas').width-190)+'px';popup.style.top=Math.min(e.offsetY,document.getElementById('pdfCanvas').height-110)+'px';popup.style.display='block';document.getElementById('noteText').value='';document.getElementById('noteText').focus();return;} if(annotMode==='erase'){eraseAt(e.offsetX,e.offsetY);return;} isDrawing=true;drawStart={x:e.offsetX,y:e.offsetY}; }
-function annotMouseMove(e){ if(!isDrawing||!annotMode)return;if(annotMode==='erase'){eraseAt(e.offsetX,e.offsetY);return;} const ac=document.getElementById('annotCanvas');const ctx=ac.getContext('2d');redrawAnnotations(pdfCurrentPage);const x=Math.min(drawStart.x,e.offsetX),y=Math.min(drawStart.y,e.offsetY),w=Math.abs(e.offsetX-drawStart.x),h=Math.abs(e.offsetY-drawStart.y);ctx.fillStyle=modeToColor(annotMode,0.35);ctx.fillRect(x,y,w,h); }
-function annotMouseUp(e){ if(!isDrawing)return;isDrawing=false;if(!annotMode||annotMode==='erase'||annotMode==='note')return;const x=Math.min(drawStart.x,e.offsetX||drawStart.x);const y=Math.min(drawStart.y,e.offsetY||drawStart.y);const w=Math.abs((e.offsetX||drawStart.x)-drawStart.x);const h=Math.abs((e.offsetY||drawStart.y)-drawStart.y);if(w<5||h<5)return;if(!pdfAnnotations[pdfCurrentPage])pdfAnnotations[pdfCurrentPage]=[];pdfAnnotations[pdfCurrentPage].push({type:'highlight',color:annotMode,x,y,w,h});redrawAnnotations(pdfCurrentPage);updateAnnotCount();debouncedSave(); }
-function eraseAt(mx,my){ if(!pdfAnnotations[pdfCurrentPage])return;pdfAnnotations[pdfCurrentPage]=pdfAnnotations[pdfCurrentPage].filter(a=>!(mx>=a.x&&mx<=a.x+a.w&&my>=a.y&&my<=a.y+a.h));redrawAnnotations(pdfCurrentPage);updateAnnotCount(); }
-function saveNoteAnnotation(){ const text=document.getElementById('noteText').value.trim();if(!text){document.getElementById('notePopup').style.display='none';return;}if(!pdfAnnotations[pdfCurrentPage])pdfAnnotations[pdfCurrentPage]=[];pdfAnnotations[pdfCurrentPage].push({type:'note',x:currentNotePos.x,y:currentNotePos.y,w:160,h:60,text,color:'blue'});document.getElementById('notePopup').style.display='none';redrawAnnotations(pdfCurrentPage);updateAnnotCount();toast('Bilješka dodana!','success'); }
-function cancelNote(){document.getElementById('notePopup').style.display='none';}
-function redrawAnnotations(pageNum){ const ac=document.getElementById('annotCanvas');if(!ac)return;const ctx=ac.getContext('2d');ctx.clearRect(0,0,ac.width,ac.height);const annots=pdfAnnotations[pageNum]||[];annots.forEach(a=>{if(a.type==='highlight'){ctx.fillStyle=modeToColor(a.color,0.38);ctx.fillRect(a.x,a.y,a.w,a.h);ctx.strokeStyle=modeToColor(a.color,0.8);ctx.lineWidth=1.5;ctx.strokeRect(a.x,a.y,a.w,a.h);}else if(a.type==='note'){ctx.fillStyle='rgba(68,136,255,0.15)';ctx.strokeStyle='rgba(68,136,255,0.8)';ctx.lineWidth=1.5;ctx.beginPath();ctx.roundRect(a.x,a.y,a.w,a.h,6);ctx.fill();ctx.stroke();ctx.fillStyle='rgba(68,136,255,1)';ctx.font='10px DM Sans';ctx.fillText('📝 '+a.text.slice(0,22)+(a.text.length>22?'…':''),a.x+6,a.y+20);}}); }
-function modeToColor(mode,alpha){ if(mode==='yellow')return`rgba(255,214,0,${alpha})`;if(mode==='green')return`rgba(0,230,118,${alpha})`;if(mode==='red')return`rgba(255,82,82,${alpha})`;if(mode==='blue')return`rgba(68,136,255,${alpha})`;return`rgba(255,255,255,${alpha})`; }
-function setAnnotMode(mode){ annotMode=(annotMode===mode)?null:mode;['yellow','green','red','note','erase'].forEach(m=>{const btn=document.getElementById('btn'+m.charAt(0).toUpperCase()+m.slice(1));if(btn)btn.classList.toggle('active',annotMode===m);});const ac=document.getElementById('annotCanvas');if(ac){ac.className='pdf-annotation-layer'+(annotMode?' '+(annotMode==='erase'?'erasing':annotMode==='note'?'noting':'drawing'):'');} }
-function clearAllAnnotations(){ if(!confirm('Obrisati sve napomene na ovoj stranici?'))return;pdfAnnotations[pdfCurrentPage]=[];redrawAnnotations(pdfCurrentPage);updateAnnotCount();toast('Napomene obrisane!','info'); }
-function updateAnnotCount(){ let total=0;Object.values(pdfAnnotations).forEach(arr=>total+=arr.length);document.getElementById('uk-annots').textContent=total; }
-function prevPdfPage(){if(pdfCurrentPage>1){pdfCurrentPage--;renderPdfPage(pdfCurrentPage);}}
-function nextPdfPage(){if(pdfCurrentPage<pdfTotalPages){pdfCurrentPage++;renderPdfPage(pdfCurrentPage);}}
-function clearPdf(){ pdfDoc=null;pdfCurrentPage=1;pdfTotalPages=0;pdfFileName='';pdfExtractedText='';pdfAnnotations={};audioBlob=null;pdfArrayBuffer=null;document.getElementById('pdfFileInfo').style.display='none';document.getElementById('ucenjeToolbar').style.display='none';document.getElementById('annotToolbar').style.display='none';document.getElementById('pdfPageNav').style.display='none';document.getElementById('pdfViewerWrap').style.display='none';document.getElementById('audioPlayerCard').style.display='none';document.getElementById('uk-pages').textContent='0';document.getElementById('uk-annots').textContent='0';document.getElementById('uk-words').textContent='0';document.getElementById('pdfFileInput').value='';toast('PDF uklonjen.','info'); }
-async function downloadAnnotatedPdf(){ if(!pdfArrayBuffer){toast('Učitajte PDF prvo!','warning');return;}showProgress('Kreiram PDF s napomenama...',20);try{if(typeof PDFLib==='undefined'){await loadScript('https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js');}const{PDFDocument,rgb,StandardFonts}=PDFLib;const pdfDoc2=await PDFDocument.load(pdfArrayBuffer);const pages=pdfDoc2.getPages();showProgress('Upisujem napomene...',50);for(const[pageNum,annots]of Object.entries(pdfAnnotations)){const pageIdx=parseInt(pageNum)-1;if(pageIdx<0||pageIdx>=pages.length)continue;const pg=pages[pageIdx];const{width,height}=pg.getSize();const canvas=document.getElementById('pdfCanvas');const scaleX=width/canvas.width;const scaleY=height/canvas.height;for(const a of annots){const rx=a.x*scaleX,ry=height-(a.y+a.h)*scaleY,rw=a.w*scaleX,rh=a.h*scaleY;if(a.type==='highlight'){const col=a.color==='yellow'?rgb(1,0.84,0):a.color==='green'?rgb(0,0.9,0.46):rgb(1,0.32,0.32);pg.drawRectangle({x:rx,y:ry,width:rw,height:rh,color:col,opacity:0.35,borderColor:col,borderWidth:0.5,borderOpacity:0.8});}else if(a.type==='note'){pg.drawRectangle({x:rx,y:ry,width:Math.min(rw,160*scaleX),height:Math.min(rh,60*scaleY),color:rgb(0.27,0.53,1),opacity:0.15,borderColor:rgb(0.27,0.53,1),borderWidth:1,borderOpacity:0.8});const helvetica=await pdfDoc2.embedFont(StandardFonts.Helvetica);pg.drawText(a.text.slice(0,40),{x:rx+4,y:ry+8,size:7,font:helvetica,color:rgb(0.1,0.3,0.9),opacity:0.9});}}}showProgress('Kompresujem...',80);const pdfBytes=await pdfDoc2.save();download(new Blob([pdfBytes],{type:'application/pdf'}),pdfFileName.replace('.pdf','')+'_napomene.pdf');showProgress('Gotovo!',100);setTimeout(hideProgress,400);toast('PDF s napomenama preuzet!','success');}catch(err){console.error(err);toast('Greška: '+err.message,'error');hideProgress();} }
-function downloadAsTxt(){ if(!pdfExtractedText){toast('Učitajte PDF prvo!','warning');return;}const blob=new Blob([pdfExtractedText],{type:'text/plain;charset=utf-8'});download(blob,pdfFileName.replace('.pdf','')+'.txt');toast('TXT fajl preuzet!','success'); }
-async function downloadAsDocx(){ if(!pdfExtractedText){toast('Učitajte PDF prvo!','warning');return;}showProgress('Kreiram Word dokument...',30);try{if(typeof docx==='undefined'){await loadScript('https://unpkg.com/docx@8.2.2/build/index.js');}const{Document,Packer,Paragraph,TextRun,HeadingLevel}=docx;const lines=pdfExtractedText.split('\n');const children=lines.map(line=>{if(line.startsWith('--- Stranica')){return new Paragraph({text:line,heading:HeadingLevel.HEADING_2});}return new Paragraph({children:[new TextRun({text:line,size:22})]});});const doc=new Document({sections:[{properties:{},children}]});showProgress('Serijaliziram...',70);const blob=await Packer.toBlob(doc);download(blob,pdfFileName.replace('.pdf','')+'.docx');showProgress('Gotovo!',100);setTimeout(hideProgress,400);toast('Word dokument preuzet!','success');}catch(err){console.error(err);toast('docx biblioteka nije dostupna. Preuzimam kao TXT.','warning');downloadAsTxt();hideProgress();} }
-async function generateAudio(){ if(!pdfExtractedText){toast('Učitajte PDF prvo!','warning');return;}showProgress('Kreiram audio...',10);try{const supported='speechSynthesis' in window;if(!supported){toast('Vaš preglednik ne podržava govornu sintezu!','error');hideProgress();return;}playSpeech();showProgress('Gotovo!',100);setTimeout(hideProgress,400);}catch(err){console.error(err);playSpeech();showProgress('Gotovo!',100);setTimeout(hideProgress,400);} }
-function playSpeech(){ if(!('speechSynthesis' in window)){toast('Vaš preglednik ne podržava govornu sintezu!','error');return;}window.speechSynthesis.cancel();const text=pdfExtractedText.slice(0,20000);const chunks=splitIntoChunks(text,200);let idx=0;const speak=()=>{if(idx>=chunks.length){document.getElementById('audioStatus').textContent='Čitanje završeno.';return;}const utter=new SpeechSynthesisUtterance(chunks[idx]);utter.lang='hr-HR';utter.rate=0.95;utter.onend=()=>{idx++;speak();};window.speechSynthesis.speak(utter);idx++;};document.getElementById('audioPlayerCard').style.display='block';document.getElementById('audioStatus').textContent='🔊 Čitam dokument...';document.getElementById('audioPlayer').src='';const ctrl=document.getElementById('audioStatus');ctrl.innerHTML='<button onclick="window.speechSynthesis.pause()" style="padding:4px 10px;border-radius:8px;background:var(--t);border:1px solid var(--br);color:var(--tx);cursor:pointer;font-size:11px;font-family:DM Sans,sans-serif;">⏸ Pauza</button> <button onclick="window.speechSynthesis.resume()" style="padding:4px 10px;border-radius:8px;background:var(--t);border:1px solid var(--br);color:var(--tx);cursor:pointer;font-size:11px;font-family:DM Sans,sans-serif;">▶ Nastavi</button> <button onclick="window.speechSynthesis.cancel()" style="padding:4px 10px;border-radius:8px;background:rgba(255,68,102,0.12);border:1px solid rgba(255,68,102,0.2);color:var(--red);cursor:pointer;font-size:11px;font-family:DM Sans,sans-serif;">⏹ Stop</button>';speak();toast('Audio reprodukcija pokrenuta!','success'); }
-function splitIntoChunks(text,wordCount){ const words=text.split(/\s+/);const chunks=[];for(let i=0;i<words.length;i+=wordCount){chunks.push(words.slice(i,i+wordCount).join(' '));}return chunks; }
-function downloadAudio(){ if(audioBlob){download(audioBlob,pdfFileName.replace('.pdf','')+'.webm');toast('Audio fajl preuzet!','success');}else{toast('Koristite "Generiši audio" da kreirate audio, zatim preuzmite.','info');} }
-function download(blob,filename){ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);document.body.removeChild(a);},1000); }
-function loadScript(src){ return new Promise((resolve,reject)=>{if(document.querySelector(`script[src="${src}"]`)){resolve();return;}const s=document.createElement('script');s.src=src;s.onload=resolve;s.onerror=reject;document.head.appendChild(s);}); }
-function showProgress(label,pct){ document.getElementById('progressLabel').textContent=label||'Obrađujem...';document.getElementById('progressBarFill').style.width=(pct||0)+'%';document.getElementById('progressOverlay').classList.remove('hidden'); }
-function hideProgress(){ document.getElementById('progressOverlay').classList.add('hidden'); }
+function handlePdfUpload(event){
+    const file = event.target.files[0];
+    if(!file) return;
+    loadPdfFile(file);
+}
+
+async function loadPdfFile(file){
+    if(file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')){
+        toast('Molimo učitajte PDF fajl!','warning');
+        return;
+    }
+    showProgress('Učitavam PDF...', 10);
+    pdfFileName = file.name;
+    pdfAnnotations = {};   // legacy — više ne koristimo
+    audioBlob = null;
+    try{
+        pdfArrayBuffer = await file.arrayBuffer();
+        showProgress('Parsiram stranice...', 35);
+        if(typeof pdfjsLib === 'undefined'){
+            toast('PDF.js nije učitan.','error');
+            hideProgress();
+            return;
+        }
+        pdfDoc = await pdfjsLib.getDocument({data: pdfArrayBuffer.slice(0)}).promise;
+        pdfTotalPages = pdfDoc.numPages;
+        pdfCurrentPage = 1;
+
+        showProgress('Ekstrahujem tekst iz PDF-a...', 60);
+        pdfExtractedText = '';
+        for(let i = 1; i <= pdfTotalPages; i++){
+            const page = await pdfDoc.getPage(i);
+            const content = await page.getTextContent();
+            pdfExtractedText += `\n\n--- Stranica ${i} ---\n`;
+            pdfExtractedText += content.items.map(s => s.str).join(' ');
+        }
+
+        const txt = pdfExtractedText.trim();
+        const words = txt.split(/\s+/).filter(w => w.length > 0).length;
+        const chars = txt.length;
+
+        showProgress('Prikazujem rezultat...', 90);
+
+        // KPI
+        document.getElementById('uk-pages').textContent = pdfTotalPages;
+        document.getElementById('uk-words').textContent = words > 999 ? Math.round(words/1000) + 'k' : words;
+        const ukChars = document.getElementById('uk-chars');
+        if(ukChars) ukChars.textContent = chars > 999 ? Math.round(chars/1000) + 'k' : chars;
+
+        // Info o fajlu
+        document.getElementById('pdfFileInfo').style.display = 'flex';
+        document.getElementById('pdfFileName').textContent = pdfFileName;
+        document.getElementById('pdfFileMeta').textContent = `${pdfTotalPages} stranica • ${words.toLocaleString('hr-HR')} riječi • ${chars.toLocaleString('hr-HR')} znakova`;
+
+        // Prikaži TXT preview
+        const prev = document.getElementById('ucenjeTxtPreview');
+        const cont = document.getElementById('ucenjeTxtContent');
+        if(prev) prev.style.display = 'block';
+        if(cont) cont.textContent = pdfExtractedText.trim() || '(prazno — PDF možda sadrži samo slike)';
+
+        // === Automatsko preuzimanje TXT-a (po zahtjevu korisnika) ===
+        const txtBlob = new Blob([pdfExtractedText], {type:'text/plain;charset=utf-8'});
+        download(txtBlob, pdfFileName.replace(/\.pdf$/i,'') + '.txt');
+
+        showProgress('Gotovo!', 100);
+        setTimeout(hideProgress, 400);
+        toast(`PDF konvertovan u TXT! Auto-preuzimanje pokrenuto.`,'success');
+    }catch(err){
+        console.error(err);
+        toast('Greška pri obradi PDF-a: ' + err.message, 'error');
+        hideProgress();
+    }
+}
+
+function clearPdf(){
+    pdfDoc = null;
+    pdfCurrentPage = 1;
+    pdfTotalPages = 0;
+    pdfFileName = '';
+    pdfExtractedText = '';
+    pdfAnnotations = {};
+    audioBlob = null;
+    pdfArrayBuffer = null;
+    document.getElementById('pdfFileInfo').style.display = 'none';
+    const prev = document.getElementById('ucenjeTxtPreview');
+    if(prev) prev.style.display = 'none';
+    const audioCard = document.getElementById('audioPlayerCard');
+    if(audioCard) audioCard.style.display = 'none';
+    if('speechSynthesis' in window) window.speechSynthesis.cancel();
+    document.getElementById('uk-pages').textContent = '0';
+    document.getElementById('uk-words').textContent = '0';
+    const ukChars = document.getElementById('uk-chars');
+    if(ukChars) ukChars.textContent = '0';
+    document.getElementById('pdfFileInput').value = '';
+    const lbl = document.getElementById('audioToggleLbl');
+    if(lbl) lbl.textContent = 'Pokreni audio';
+    toast('PDF uklonjen.','info');
+}
+
+// Audio reprodukcija — toggle (start/stop)
+let _ttsPlaying = false;
+function toggleAudioPlayback(){
+    if(!pdfExtractedText){ toast('Prvo učitajte PDF!','warning'); return; }
+    if(!('speechSynthesis' in window)){
+        toast('Vaš preglednik ne podržava govornu sintezu.','error');
+        return;
+    }
+    const lbl = document.getElementById('audioToggleLbl');
+    if(_ttsPlaying){
+        window.speechSynthesis.cancel();
+        _ttsPlaying = false;
+        if(lbl) lbl.textContent = 'Pokreni audio';
+        const card = document.getElementById('audioPlayerCard');
+        if(card) card.style.display = 'none';
+        toast('Audio zaustavljen.','info');
+        return;
+    }
+    _startSpeech();
+    _ttsPlaying = true;
+    if(lbl) lbl.textContent = 'Zaustavi audio';
+}
+
+function _startSpeech(){
+    window.speechSynthesis.cancel();
+    const card = document.getElementById('audioPlayerCard');
+    if(card) card.style.display = 'block';
+    const status = document.getElementById('audioStatus');
+    const text = pdfExtractedText.slice(0, 20000); // razumni limit
+    const chunks = splitIntoChunks(text, 200);
+    let idx = 0;
+
+    const speak = () => {
+        if(idx >= chunks.length){
+            if(status) status.innerHTML = '✅ Reprodukcija završena.';
+            _ttsPlaying = false;
+            const lbl = document.getElementById('audioToggleLbl');
+            if(lbl) lbl.textContent = 'Pokreni audio';
+            return;
+        }
+        const utter = new SpeechSynthesisUtterance(chunks[idx]);
+        utter.lang = 'hr-HR';
+        utter.rate = 0.95;
+        utter.onend = () => { idx++; speak(); };
+        utter.onerror = () => { idx++; speak(); };
+        window.speechSynthesis.speak(utter);
+    };
+
+    if(status){
+        status.innerHTML = `
+            <div style="margin-bottom:8px;">🔊 Reproduciram tekst...</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;">
+                <button onclick="window.speechSynthesis.pause()" style="padding:6px 12px;border-radius:8px;background:var(--t);border:1px solid var(--br);color:var(--tx);cursor:pointer;font-size:11px;font-family:'DM Sans',sans-serif;">⏸ Pauza</button>
+                <button onclick="window.speechSynthesis.resume()" style="padding:6px 12px;border-radius:8px;background:var(--t);border:1px solid var(--br);color:var(--tx);cursor:pointer;font-size:11px;font-family:'DM Sans',sans-serif;">▶ Nastavi</button>
+                <button onclick="toggleAudioPlayback()" style="padding:6px 12px;border-radius:8px;background:rgba(255,68,102,0.12);border:1px solid rgba(255,68,102,0.25);color:var(--red);cursor:pointer;font-size:11px;font-family:'DM Sans',sans-serif;">⏹ Stop</button>
+            </div>`;
+    }
+    speak();
+    toast('Audio reprodukcija pokrenuta!','success');
+}
+
+function splitIntoChunks(text, wordCount){
+    const words = text.split(/\s+/);
+    const chunks = [];
+    for(let i = 0; i < words.length; i += wordCount){
+        chunks.push(words.slice(i, i + wordCount).join(' '));
+    }
+    return chunks;
+}
+
+function copyTxtToClipboard(){
+    if(!pdfExtractedText){ toast('Prvo učitajte PDF!','warning'); return; }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(pdfExtractedText).then(()=>{
+            toast('Tekst kopiran u clipboard!','success');
+        }).catch(()=>{
+            _fallbackCopy(pdfExtractedText);
+        });
+    } else {
+        _fallbackCopy(pdfExtractedText);
+    }
+}
+function _fallbackCopy(text){
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try{ document.execCommand('copy'); toast('Tekst kopiran!','success'); }
+    catch(e){ toast('Kopiranje nije uspjelo.','error'); }
+    document.body.removeChild(ta);
+}
+
+function downloadAsTxt(){
+    if(!pdfExtractedText){ toast('Učitajte PDF prvo!','warning'); return; }
+    const blob = new Blob([pdfExtractedText], {type:'text/plain;charset=utf-8'});
+    download(blob, pdfFileName.replace(/\.pdf$/i,'') + '.txt');
+    toast('TXT preuzet!','success');
+}
+
+async function downloadAsDocx(){
+    if(!pdfExtractedText){ toast('Učitajte PDF prvo!','warning'); return; }
+    showProgress('Kreiram Word dokument...', 30);
+    try{
+        if(typeof docx === 'undefined'){
+            await loadScript('https://unpkg.com/docx@8.2.2/build/index.js');
+        }
+        const { Document, Packer, Paragraph, TextRun, HeadingLevel } = docx;
+        const lines = pdfExtractedText.split('\n');
+        const children = lines.map(line => {
+            if(line.startsWith('--- Stranica')){
+                return new Paragraph({ text: line, heading: HeadingLevel.HEADING_2 });
+            }
+            return new Paragraph({ children: [ new TextRun({ text: line, size: 22 }) ] });
+        });
+        const doc = new Document({ sections: [{ properties: {}, children }] });
+        showProgress('Serijaliziram...', 70);
+        const blob = await Packer.toBlob(doc);
+        download(blob, pdfFileName.replace(/\.pdf$/i,'') + '.docx');
+        showProgress('Gotovo!', 100);
+        setTimeout(hideProgress, 400);
+        toast('Word dokument preuzet!','success');
+    }catch(err){
+        console.error(err);
+        toast('docx biblioteka nije dostupna. Preuzimam kao TXT.','warning');
+        downloadAsTxt();
+        hideProgress();
+    }
+}
+
+function download(blob, filename){
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => {
+        URL.revokeObjectURL(a.href);
+        document.body.removeChild(a);
+    }, 1000);
+}
+
+function loadScript(src){
+    return new Promise((resolve, reject) => {
+        if(document.querySelector(`script[src="${src}"]`)){ resolve(); return; }
+        const s = document.createElement('script');
+        s.src = src;
+        s.onload = resolve;
+        s.onerror = reject;
+        document.head.appendChild(s);
+    });
+}
+
+function showProgress(label, pct){
+    document.getElementById('progressLabel').textContent = label || 'Obrađujem...';
+    document.getElementById('progressBarFill').style.width = (pct || 0) + '%';
+    document.getElementById('progressOverlay').classList.remove('hidden');
+}
+function hideProgress(){
+    document.getElementById('progressOverlay').classList.add('hidden');
+}
+
+// ── Legacy stub funkcije (pozivane na nekim mjestima u kodu, ne smiju srušiti) ──
+function generateAudio(){ toggleAudioPlayback(); }
+function downloadAudio(){ toast('Audio se reproducira direktno — koristi "Pokreni audio".','info'); }
+function downloadAnnotatedPdf(){ toast('Annotacije su uklonjene iz novog UČENJE modula. Koristi PDF → TXT konverziju.','info'); }
+function renderPdfPage(){ /* legacy no-op */ }
+function setAnnotMode(){ /* legacy no-op */ }
+function clearAllAnnotations(){ /* legacy no-op */ }
+function updateAnnotCount(){ /* legacy no-op */ }
+function prevPdfPage(){ /* legacy no-op */ }
+function nextPdfPage(){ /* legacy no-op */ }
+function setupAnnotationCanvas(){ /* legacy no-op */ }
+function annotMouseDown(){ /* legacy no-op */ }
+function annotMouseMove(){ /* legacy no-op */ }
+function annotMouseUp(){ /* legacy no-op */ }
+function annotTouchStart(){ /* legacy no-op */ }
+function annotTouchMove(){ /* legacy no-op */ }
+function annotTouchEnd(){ /* legacy no-op */ }
+function saveNoteAnnotation(){ /* legacy no-op */ }
+function cancelNote(){ /* legacy no-op */ }
+function eraseAt(){ /* legacy no-op */ }
+function redrawAnnotations(){ /* legacy no-op */ }
+function modeToColor(){ return 'rgba(0,0,0,0)'; }
+function playSpeech(){ _startSpeech(); }
 
 // ─────────────────────────────────────────────
 // UTILS
